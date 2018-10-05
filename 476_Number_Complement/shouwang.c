@@ -25,7 +25,6 @@ Explanation: The binary representation of 5 is 101 (no leading zero bits), and i
 
 对于补全，以5为例，101，每一位翻转得到，010，即结果为2，那么，010+101 = 111，2的3次方。再以35为例，10 0011，翻转得到011100，即有100011+011100=111111,2的6次方，那么不难得到，其实补全数，就是用2的n次方，减去该数，其中，n为该数二进制表示的位数。
 **************************************************************/
-#include"leetcode_functions.h"
 int findComplement(int num) {
 
     int temp = num;

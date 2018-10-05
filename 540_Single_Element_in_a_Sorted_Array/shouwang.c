@@ -8,8 +8,6 @@
 *
 ================================================================*/
 
-
-#include "leetcode_functions.h"
 int singleNonDuplicate(int* nums, int numsSize) {
     if(NULL == nums || 0 == numsSize)
         return 0;

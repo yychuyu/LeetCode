@@ -29,7 +29,7 @@ return [0, 1].
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
-#include "leetcode_functions.h"
+
 
 
 int* twoSum(int* nums, int numsSize, int target) {

@@ -19,7 +19,6 @@ Given s = "hello", return "olleh".
 分析
 头尾对应位置的字符位置调换
 ***************************************************************/
-#include"leetcode_functions.h"
 char* reverseString(char* s)
 {
     unsigned  int len = strlen((const char*)s);
