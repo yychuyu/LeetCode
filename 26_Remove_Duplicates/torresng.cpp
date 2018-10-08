@@ -1,7 +1,7 @@
 /***************************************************************
 *   Copyright (C) 2018 All rights reserved.
 *
-*   File Name   ：001_two_sum.c
+*   File Name   ：torresng.cpp
 *   Creator     ：torresng
 *   Create Time ：2018/10/08
 *   Describe    ：
@@ -39,7 +39,7 @@ int removeDuplicates(vector<int> &nums) {
     }
     int pos = 1;
     int value = nums[0];
-    int len = 1;
+    size_t len = 1;
     for(int i = 1; i < nums.size(); i++) {
         if(value != nums[i]) {
             nums[pos] = nums[i];
@@ -54,7 +54,7 @@ int removeDuplicates(vector<int> &nums) {
 
 int main(void) {
     vector<int> nums = {0,0,1,1,1,2,2,3,3,4};
-    int len = removeDuplicates(nums);
+    size_t len = removeDuplicates(nums);
     cout << "len: " << len << endl;
     for(int v : nums) {
         cout << v << ' ';
