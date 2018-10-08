@@ -2,7 +2,7 @@
 *   Copyright (C) 2018 All rights reserved.
 *
 *   File Name   ：torresng.cpp
-*   Creator     ：torresng
+*   Creator     ：Torres Ng
 *   Create Time ：2018/10/08
 *   Describe    ：
 *

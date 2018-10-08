@@ -1,8 +1,8 @@
 /***************************************************************
 *   Copyright (C) 2018 All rights reserved.
 *
-*   File Name   ：001_two_sum.c
-*   Creator     ：torresng
+*   File Name   ：torresng.cpp
+*   Creator     ：Torres Ng
 *   Create Time ：2018/10/08
 *   Describe    ：
 *
