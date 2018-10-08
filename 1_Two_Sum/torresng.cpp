@@ -34,12 +34,12 @@ return [0, 1].
 using namespace std;
 
 unique_ptr<pair<int, int>> twosum(vector<int> v, int target) {
-    int length = v.size();
+    size_t length = v.size();
     if(length < 2) {
         return unique_ptr<pair<int,int>>(nullptr);
     }
-    for(int i = 0; i < length - 1; i++) {
-        for(int j = i + 1; j < v.size(); j++) {
+    for(size_t i = 0; i < length - 1; i++) {
+        for(size_t j = i + 1; j < v.size(); j++) {
             if((v[i] + v[j]) == target) {
                 return unique_ptr<pair<int,int>>(new pair<int,int>(i, j));
             }
