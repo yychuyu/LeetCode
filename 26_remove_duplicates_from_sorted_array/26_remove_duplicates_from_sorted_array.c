@@ -1,5 +1,11 @@
-int removeDuplicates(int* nums, int numsSize) {
-     if (numsSize == 0)
+/**
+* LeetCode The 26th problem :remove-duplicates-from-sorted-array
+* Auth:Barlowwang
+* Date:2018-10-08
+**/ 
+int removeDuplicates(int *nums, int numsSize)
+{
+    if (numsSize == 0)
         return 0;
     int current = 0;
     for (int i = 0; i < numsSize; ++i)
@@ -10,5 +16,4 @@ int removeDuplicates(int* nums, int numsSize) {
         }
     }
     return current + 1;
-    
 }
