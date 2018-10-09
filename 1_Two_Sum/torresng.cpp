@@ -49,7 +49,8 @@ int main(void) {
     vector<int> vec = {2,7,11,15};
     vector<int> result = twoSum(vec, 9);
     for(auto v : result) {
-        cout << v << endl;
+        cout << v << ' ';
     }
+    cout << endl;
     return 0;
 }
