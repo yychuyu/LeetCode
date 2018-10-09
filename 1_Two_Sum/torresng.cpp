@@ -28,31 +28,28 @@ return [0, 1].
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <unordered_map>
 
 using namespace std;
 
-unique_ptr<pair<int, int>> twosum(vector<int> v, int target) {
-    size_t length = v.size();
-    if(length < 2) {
-        return unique_ptr<pair<int,int>>(nullptr);
-    }
-    for(size_t i = 0; i < length - 1; i++) {
-        for(size_t j = i + 1; j < v.size(); j++) {
-            if((v[i] + v[j]) == target) {
-                return unique_ptr<pair<int,int>>(new pair<int,int>(i, j));
-            }
+vector<int> twoSum(vector<int>& nums, int target) {
+    unordered_map<int,int> hashtable;
+    for (int i = 0; i < nums.size(); i++){
+        int complement = target - nums[i];
+        unordered_map<int,int>::const_iterator got = hashtable.find(complement);
+        if (got != hashtable.end()){
+            return {i, got->second};
         }
+        hashtable.insert({nums[i], i});
     }
-    return unique_ptr<pair<int,int>>(nullptr);
+    return {};
 }
 
 int main(void) {
-    vector<int> v = {2,7,11,15};
-    unique_ptr<pair<int, int>> result = twosum(v, 9);
-    if(result == nullptr) {
-        cout << "not fount !" << endl;
-    } else {
-        cout << "index: " << result->first << "," << result->second << endl;
+    vector<int> vec = {2,7,11,15};
+    vector<int> result = twoSum(vec, 9);
+    for(auto v : result) {
+        cout << v << endl;
     }
     return 0;
 }
