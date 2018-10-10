@@ -1,7 +1,7 @@
 /*
-author: NiceFuture
-time  : 2018.10.10
-*/
+ * author: NICE-FUTURE
+ * time: 2018.10.10 18:27
+ */
 
 #include <stdio.h>
 
@@ -16,22 +16,21 @@ void delete(int* nums, int* numsSize, int index)
 }
 
 int removeDuplicates(int* nums, int numsSize) {
-    int i, cur = nums[0];
+    int i = 0;
 
-    for (i = 1; i < numsSize; i++) {
-        if (nums[i] == cur) {
-            delete(nums, &numsSize, i);
-            i--;
+    while (i < numsSize-1){
+        if (nums[i] == nums[i+1]) {
+            delete(nums, &numsSize, i+1);
         } else {
-            cur = nums[i];
+            i++;
         }
     }
 
     return numsSize;
 }
 
-//----------------------------------------------
-//个人测试用例
+
+//以下为个人测试用例
 int main(void)
 {
     int n;
