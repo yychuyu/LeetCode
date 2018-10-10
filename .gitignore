@@ -36,4 +36,3 @@ bin/
 
 # ignore created symlink
 program
-cpp_template/
