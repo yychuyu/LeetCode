@@ -31,6 +31,7 @@ public:
         return nums.size();
     }
 };
+//for faster
 static const auto __ = []()
 {
 	ios::sync_with_stdio(false);
