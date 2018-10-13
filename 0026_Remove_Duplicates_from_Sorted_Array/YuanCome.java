@@ -22,13 +22,12 @@ package Day1;
 
 */
 
-import java.awt.font.NumericShaper;
 
 /**
  * @author THY
  * @date 2018/10/9
  */
-public class Day1Solution {
+public class YuanCome {
     //题意不能设置set保存数组，仅能在原数组进行操作
     //原数组为排序数组! 可以忽略后续出现重复数字问题
     private static int removeDuplicates(int[] nums) {
