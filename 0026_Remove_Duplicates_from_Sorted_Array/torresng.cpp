@@ -32,30 +32,35 @@ Example 2:
 using namespace std;
 
 int removeDuplicates(vector<int> &nums) {
-    if(nums.size() < 0) {
+    if(nums.empty()) {
         return 0;
     }
-    int pos = 1;
-    int value = nums[0];
-    size_t len = 1;
-    for(int i = 1; i < nums.size(); i++) {
-        if(value != nums[i]) {
-            nums[pos] = nums[i];
-            pos++;
-            value = nums[i];
-            len++;
+    vector<int>::iterator iter1 = nums.begin();
+    vector<int>::iterator iter2 = iter1 + 1;
+    size_t count = nums.size();
+
+    while(iter2 != nums.end()) {
+        if(*iter1 == *iter2) {
+            --count;
+        } else {
+            if((iter2 - iter1) == 1) {
+                ++iter1;
+            } else {
+                ++iter1;
+                *iter1 = *iter2;
+            }
         }
+        ++iter2;
     }
-    nums.resize(len);
-    return len;
+    return count;
 }
 
 int main(void) {
     vector<int> nums = {0,0,1,1,1,2,2,3,3,4};
     size_t len = removeDuplicates(nums);
     cout << "len: " << len << endl;
-    for(int v : nums) {
-        cout << v << ' ';
+    for(int i = 0; i < len; i++) {
+        cout << nums[i] << ' ';
     }
     cout << endl;
 
