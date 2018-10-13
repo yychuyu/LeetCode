@@ -37,9 +37,8 @@ public class AddTwoNumbers {
 
     public int addTwoNumber(int x, int y) {
         int result = 0;
-        int temp = x ^ y;
         //将x与y的异或值转换为二进制形式的String放到xor中
-        String xor = Integer.toBinaryString(temp);
+        String xor = Integer.toBinaryString(x ^ y);
         System.out.println("x异或y的二进制为" + xor);
         //再将xor转换为char数组binChar
         char[] binChar = xor.toCharArray();
