@@ -37,7 +37,7 @@ int lengthOfLongestSubstring(char* s) {
     unsigned int len = strlen(s);
     unsigned int outLoop = 0;
     unsigned int loop = 0;
-    unsigned int max = 1;
+    int max = 1;
     unsigned int temp = 0;
     for(;outLoop < len;outLoop++)
     {
