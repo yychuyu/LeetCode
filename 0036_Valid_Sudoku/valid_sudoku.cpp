@@ -6,6 +6,9 @@
   3. 数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
 
   数独部分空格内已填入了数字，空白格用 '.' 表示。
+  
+  参考：
+  https://www.cnblogs.com/ganganloveu/p/4170632.html
 */
 
 class Solution {
