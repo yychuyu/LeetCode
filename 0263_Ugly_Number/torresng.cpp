@@ -5,29 +5,28 @@ using namespace std;
 class Solution {
 public:
     bool isUgly(int num) {
-        while(num && num != 1) {
-            if(num % 2 == 0) {
-                num /= 2;
-            } else if(num % 3 == 0) {
-                num /= 3;
-            } else if(num % 5 ==0) {
-                num /= 5;
-            } else {
-                break;
-            }
-        }
-        if(num == 1) {
-            return true;
-        } else {
+        if(num <= 0) {
             return false;
         }
+        while(num % 5 == 0) {
+            num /= 5;
+        }
+        while(num % 3 == 0) {
+            num /= 3;
+        }
+        while(num % 2 == 0) {
+            num /= 2;
+        }
+        return num == 1;
     }
 };
 
 int main(void)
 {
     Solution s = Solution();
-    cout << s.isUgly(8) << endl;
+    cout << "isUgly(4): " << boolalpha << s.isUgly(4) << endl;
+    cout << "isUgly(8): " << boolalpha << s.isUgly(8) << endl;
+    cout << "isUgly(14): " << boolalpha << s.isUgly(14) << endl;
     
     return 0;
 }
