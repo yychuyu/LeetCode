@@ -26,6 +26,13 @@ Your algorithm should run in linear runtime complexity. Could you implement it u
 
 using namespace std;
 
+static auto __ = [] () {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    return 0;
+}();
+
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
