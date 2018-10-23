@@ -28,7 +28,12 @@ struct ListNode {
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        if(!head) return false;
+        if(head == NULL || head->next == NULL) {
+            return false;
+        }
+        if(head->next == head) {
+            return true;
+        }
         ListNode *slowp = head;
         ListNode *fastp = head;
         while(fastp->next && fastp->next->next) {
