@@ -28,14 +28,14 @@ using namespace std;
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int bestSum = INT_MIN;
-        int sum = 0;
+        int result = INT_MIN;
+        int runSum = 0;
         for(auto n : nums) {
-            sum += n;
-            if(sum > bestSum) bestSum = sum;
-            if(sum < 0) sum = 0;
+            runSum += n;
+            if(runSum > result) result = runSum;
+            if(runSum < 0) runSum = 0;
         }
-        return bestSum;
+        return result;
     }
 };
 
