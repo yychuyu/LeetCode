@@ -26,14 +26,7 @@ using namespace std;
 class Solution {
 public:
     int addDigits(int num) {
-        int mod;
-        int div;
-        do {
-            mod = num / 10;
-            div = num % 10;
-            num = mod + div;
-        } while(num >= 10);
-        return num;        
+        return (num-1) % 9 + 1;        
     }
 };
 
