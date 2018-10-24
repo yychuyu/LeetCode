@@ -35,14 +35,14 @@ public:
     int rob(vector<int>& nums) {
         int count = nums.size();
         if(count == 0) return 0;
-        vector<int> weights(count);
-        if(count > 0) weights[0] = nums[0];
-        if(count > 1) weights[1] = max(nums[0], nums[1]);
-        if(count > 2) weights[2] = max(nums[0]+nums[2], nums[1]);
+        vector<int> money(count);
+        if(count > 0) money[0] = nums[0];
+        if(count > 1) money[1] = max(nums[0], nums[1]);
+        if(count > 2) money[2] = max(nums[0]+nums[2], nums[1]);
         for(int i = 3; i < count ; i++) {
-            weights[i] = max(weights[i-3]+nums[i-1], weights[i-2]+nums[i]);
+            money[i] = max(money[i-3]+nums[i-1], money[i-2]+nums[i]);
         }
-        return weights[count - 1];
+        return money[count - 1];
     }
 };
 
