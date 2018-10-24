@@ -11,7 +11,7 @@ int missingNumber(int* nums, int numsSize) {
     return i;
 }*/
 
-//方法二，用一个变量，求和
+/*//方法二，用一个变量，求和
 int missingNumber(int* nums, int numsSize)
 {
     unsigned long long sum = 0;
@@ -22,9 +22,20 @@ int missingNumber(int* nums, int numsSize)
     }
 
     return ( numsSize*(numsSize+1)/2 - sum );
-}
+}*/
 
-//两种方法耗时都不算长，占用内存空间大小不同
+//方法三，两数相同则异或运算为0。学习了
+int missingNumber(int* nums, int numsSize)
+{
+    int i, result = 0;
+
+    for (i = 0; i < numsSize; i++) {
+        result ^= (i ^ nums[i]);
+    }
+    result ^= i;
+
+    return result;
+}
 
 int main(void)
 {
