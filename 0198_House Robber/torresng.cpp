@@ -25,6 +25,11 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
              Total amount you can rob = 2 + 9 + 1 = 12.
 ***************************************************************/
 
+/***************************************************************
+題解: 
+http://blog.torresng.com/2018/10/24/LeetCode-No-198-House-Robber/#more
+***************************************************************/
+
 #include <iostream>
 #include <vector>
 
