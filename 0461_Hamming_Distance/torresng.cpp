@@ -24,8 +24,8 @@ public:
         unsigned int result = 0;
         x ^= y;
         while(x) {
-            result += x & 1;
-            x = x >> 1;
+            result++;
+            x = (x - 1) & x;
         }
         return result;
     }
