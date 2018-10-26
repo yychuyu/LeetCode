@@ -47,7 +47,7 @@ public:
 			mod = x % 10;
 			x = x / 10;
 			result = (result * 10 + mod);
-            if(result != (int32_t)result) return 0; // return 0 if overflow
+            if(result != (int)result) return 0; // return 0 if overflow
 		}
 		return neg ? -result : result;
 	}
