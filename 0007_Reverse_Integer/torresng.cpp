@@ -44,9 +44,8 @@ public:
 		x = abs(x);
 		long result = 0, mod = 0;
 		while(x) {
-			mod = x % 10;
+			result = (result*10 + x%10);
 			x = x / 10;
-			result = (result * 10 + mod);
             if(result != (int)result) return 0; // return 0 if overflow
 		}
 		return neg ? -result : result;
