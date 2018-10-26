@@ -36,26 +36,22 @@ class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
 		if(strs.size() == 0) return "";
-		if(strs.size() == 1) return strs[0];
+		string result = "";
 
-		string s1 = strs[0];
-		size_t min_size = s1.size();
-		for(int i = 1; i < strs.size(); i++) {
-			string s2 = strs[i];
-			if(s2.size() == 0) return "";
-			size_t count = 0;
-			size_t min = (min_size < s2.size()) ? min_size : s2.size();
-			for(int j = 0; j < min_size; j++) {
-				if(s1[j] == s2[j]) {
-					count++;
-				} else {
-					break;
-				}
+		sort(strs.begin(), strs.end());
+		
+		bool has_diff = false;
+		size_t i = 0;
+		while(!has_diff && i < strs[0].size()) {
+			char c = strs[0][i];
+			for(int j = 1; j < strs.size(); j++) {
+				has_diff = strs[j][i] != c;
+				if(has_diff) break;
 			}
-			min_size = count;
+			if(!has_diff) result += c;
+			i++;
 		}
-		s1.resize(min_size);
-		return s1;
+		return result;
     }
 };
 
