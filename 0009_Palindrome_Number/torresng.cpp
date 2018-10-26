@@ -36,19 +36,15 @@ using namespace std;
 
 class Solution {
 public:
-	int reverse(int x) {
-		long result = 0, mod = 0;
-		while(x) {
-			mod = x % 10;
-			x = x / 10;
-			result = (result * 10 + mod);
-		}
-		return result;
-	}
     bool isPalindrome(int x) {
         if(x < 0) return false; 
-        if(reverse(x) == x) return true;
-        return false;
+        int y = x, z = 0;
+        while(y) {
+            z *= 10;
+            z += y % 10;
+            y /= 10;
+        }
+        return (x == z);
     }
 };
 
