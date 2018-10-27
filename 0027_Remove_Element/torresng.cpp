@@ -57,17 +57,7 @@ using namespace std;
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        size_t last = nums.size() - 1;    
-        int size = 0;
-        for(int i = 0; i < nums.size(); i++) {
-            if(nums[size] == val) {
-                nums[size] = nums[last];
-                last--;
-            } else {
-                size++;
-            }
-        }
-        return size;
+        return partition(nums.begin(),nums.end(), [val](int x) { return x != val; }) - nums.begin();
     }
 };
 
