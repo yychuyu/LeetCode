@@ -37,17 +37,17 @@ class Solution {
 public:
     int strStr(string haystack, string needle) {
         if(needle == "") return 0;    
-        for(int i = 0; i < (int)haystack.size() - (int)needle.size() + 1; i++) {
-            bool match = true;
-            for(int j = 0; j < needle.size(); j++) {
-                if(haystack[i + j] != needle[j]) {
-                    match = false;
-                    break;
-                }
+        int i = 0, j = 0;
+        while(i < haystack.size() && j < needle.size()) {
+            if(haystack[i] == needle[j]) {
+                i++;
+                j++;
+            } else {
+                i = i - j + 1;
+                j = 0;
             }
-            if(match) return i;
         }
-        return -1;
+        return (j == needle.size()) ? i - j : -1;
     }
 };
 
@@ -60,7 +60,7 @@ int main(void) {
 	cout << "haystack = \"aaaaa\", needle = \"bba\": " << boolalpha << s.strStr(haystack, needle) << endl;
     haystack = "abb";
     needle = "abaaa";
-	cout << "haystack = \"aaaaa\", needle = \"bba\": " << boolalpha << s.strStr(haystack, needle) << endl;
+	cout << "haystack = \"abb\", needle = \"abaaa\": " << boolalpha << s.strStr(haystack, needle) << endl;
 	return 0;
 }
 
