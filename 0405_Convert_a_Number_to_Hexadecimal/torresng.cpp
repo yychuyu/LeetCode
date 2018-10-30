@@ -34,6 +34,7 @@ Example 2:
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -43,12 +44,17 @@ public:
         if(num == 0) return "0";
         char map[16] = {'0','1','2','3','4','5','6','7',
                         '8','9','a','b','c','d','e','f'};
+        vector<char> temp;
+        unsigned int bin = num;
+        while(bin) {
+            char hex = map[bin & 0xf];
+            temp.push_back(hex);
+            bin = bin >> 4;
+        }
+
         string result;
-        unsigned int num1 = num;
-        while(num1) {
-            int hex = num1 & 0xf;
-            result = map[hex] + result;
-            num1 = num1 >> 4;
+        for(auto it = temp.rbegin(); it != temp.rend(); ++it) {
+            result += *it;
         }
         return result;
     }
@@ -58,7 +64,7 @@ int main(void) {
     Solution s = Solution();
     cout << "26: " << s.toHex(26) << endl;
     cout << "-1: " << s.toHex(-1) << endl;
-    cout << "0: " << s.toHex(-1) << endl;
+    cout << "0: " << s.toHex(0) << endl;
     return 0;
 }
 
