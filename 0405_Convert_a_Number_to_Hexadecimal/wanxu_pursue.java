@@ -1,4 +1,3 @@
-package P_0405_Convert_a_Number_to_Hexadecimal;
 
 /**
  * Created by Json Wan on 2018/10/29.

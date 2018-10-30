@@ -1,4 +1,3 @@
-package P_0400_Nth_Digit;
 
 /**
  * Created by Json Wan on 2018/10/29.
