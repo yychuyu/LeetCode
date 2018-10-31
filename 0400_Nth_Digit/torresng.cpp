@@ -41,7 +41,7 @@ public:
     int findNthDigit(int n) {
         long count = 9;
         int len = 1;
-        int start = 0;
+        int start = 1;
         while(n > count*len) {
             start += count;
             n -= count*len;
@@ -50,7 +50,7 @@ public:
         }
         int posInRange = (n-1)/len;
         int posInNum = (n-1)%len;
-        int realNum = start + 1 + posInRange;
+        int realNum = start + posInRange;
         string s = to_string(realNum);
         return s[posInNum] - '0';
     }
