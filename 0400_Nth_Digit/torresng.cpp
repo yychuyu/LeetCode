@@ -40,18 +40,18 @@ class Solution {
 public:
     int findNthDigit(int n) {
         long count = 9;
-        long len = 1;
-        long range = n;
-        long preRange = 0;
+        int len = 1;
+        int range = n;
+        int preRange = 0;
         while(range > count*len) {
             preRange += count;
             range -= count*len;
             count *= 10;
             len++;
         }
-        long posInRange = (range-1)/len;
-        long posInNum = (range-1)%len;
-        long realNum = preRange + 1 + posInRange;
+        int posInRange = (range-1)/len;
+        int posInNum = (range-1)%len;
+        int realNum = preRange + 1 + posInRange;
         string s = to_string(realNum);
         return s[posInNum] - '0';
     }
@@ -62,7 +62,7 @@ int main(void) {
     cout << "5th: " << s.findNthDigit(5) << endl;
     cout << "11th: " << s.findNthDigit(11) << endl;
     cout << "12th: " << s.findNthDigit(12) << endl;
-    cout << "13th: " << s.findNthDigit(12) << endl;
+    cout << "1000000000th: " << s.findNthDigit(1000000000) << endl;
     return 0;
 }
 
