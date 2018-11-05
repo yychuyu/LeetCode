@@ -43,9 +43,10 @@ using namespace std;
 class Solution {
 public:
     string countAndSay(int n) {
-    	string s = "1"; 
 		string result = "1";
+    	string s; 
 		for(int j = 1; j < n; j++) {
+            s = result;
 			result.clear();
             int count = 1;
             char c = s[0];
@@ -60,7 +61,7 @@ public:
                 }
                 i++;
 			}
-            result += to_string(count) + c;
+            result += (to_string(count) + c);
             if(!result.empty()) {
                 s = result;
             }
