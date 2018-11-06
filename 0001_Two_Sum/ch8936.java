@@ -39,6 +39,7 @@ class TwoSum {
 			
 		}
 		throw new IllegalArgumentException("No two sum solution");
+	}
 
 	
 	
