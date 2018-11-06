@@ -25,6 +25,7 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLastWord(string s) {
+        if(s.size() == 0) return 0;
         int result = 0;
         auto rit = s.rbegin();
         // ignore space
@@ -36,7 +37,7 @@ public:
             result++;
         }
         return result;
-    }
+    }    
 };
 
 int main(void) {
