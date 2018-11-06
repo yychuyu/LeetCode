@@ -1,0 +1,259 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+import javax.print.attribute.standard.PrinterLocation;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+import com.sun.prism.ResourceFactoryListener;
+
+
+//Leetcode：NO.268缺失数字：给出一个包含 0 ..N中N个数的序列，找出0 ..N中没有出现在序列中的那个数。
+
+/* 思路：很简单也很高效的方法，先算出0+1+2+3....+N的和，
+ 然后依次减去数组里的元素，最后得到的差，就是唯一缺失的整数。
+假设数组长度是N，那么该解法的时间复杂度是O（N），空间复杂度是O（1）。*/
+
+class solution {
+    public int missingNumber(int[] nums) {
+        int sum=0;
+	for(int i=1;i<=nums.length;i++){
+		sum+=i;
+	}
+	int getSum=0;
+	for(int i=0;i<nums.length;i++) {
+		getSum+=nums[i];
+	}
+	return(sum-getSum);
+        
+    }
+		
+	}
+
+
+
+/*解法一：创建一个HashMap，以0到N为键，值都是0 。然后遍历整个数组，每读到一个整数，
+ 就找到HashMap当中对应的键，让其值加一。由于数组中缺少一个整数，最终一定有
+N-1个键对应的值等于1, 剩下一个键对应的值等于0。遍历修改后的HashMap，找到这个值为0的键。
+假设数组长度是N，那么该解法的时间复杂度是O（1），空间复杂度是O（N）。*/
+
+/*public class MissingNumber {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);//从键盘输入数字
+		System.out.println("请输入数组长度：");
+		 int length=sc.nextInt();
+		System.out.println("请输入数字：");
+		//String num=sc.nextLine();
+		//char[] number=num.toCharArray();
+		int[] number=new int[length];
+		int[] CompareObject=new int[length+1];
+		for (int i=0;i<length;i++) {	
+			number[i]= sc.nextInt();	
+		}
+		for (int i=0;i<=length;i++) {	
+			CompareObject[i]=0;	
+		}
+
+		for (int i=0;i<length;i++) {
+			CompareObject[number[i]]=1;
+		}
+			for(int j=0;j<=length;j++) {
+			if (CompareObject[j]!=1) {
+				System.out.println(j);
+			}				
+		}
+	 }
+	
+}
+*/
+
+
+/*解法二：先把数组元素进行排序，然后遍历数组，检查任意两个相邻元素数值是否是连续的。
+ 如果不连续，则中间缺少的整数就是所要寻找的；如果全都连续，则缺少的整数不是0就是N。
+假设数组长度是N，如果用时间复杂度为O（N*LogN）的排序算法进行排序，
+那么该解法的时间复杂度是O（N*LogN），空间复杂度是O（1）。*/
+/*public class MissingNumber {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);//从键盘输入数字
+		System.out.println("请输入数组(用空格隔开）：");
+		String nums=sc.nextLine();
+		String[] number = nums.split(" ");
+		int[] num=new int[number.length];
+		for(int i = 0; i<number.length; i++){
+			num[i] = Integer.valueOf(number[i]);//字符串转化为整数
+			}
+		Arrays.sort(num);//排序
+	for(int i=0;i<num.length;i++) {
+		if(num[i+1]-num[i]==1);
+		else {
+			System.out.println(num[i+1]-1);
+		}
+		
+	}
+	
+}
+}
+*/
+
+
+
+
+/* 解法三：很简单也很高效的方法，先算出0+1+2+3....+N的和，
+ 然后依次减去数组里的元素，最后得到的差，就是唯一缺失的整数。
+假设数组长度是N，那么该解法的时间复杂度是O（N），空间复杂度是O（1）。*/
+
+
+/*public class MissingNumber {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);//从键盘输入数字
+		System.out.println("请输入数组(用空格隔开）：");
+		String nums=sc.nextLine();
+		String[] number = nums.split(" ");
+		int[] num=new int[number.length];
+		for(int i = 0; i<number.length; i++){
+			try{
+			num[i] = Integer.parseInt(number[i].trim());//字符串转化为整数
+			}catch (NumberFormatException nbFmtExp){
+			num[i] = 0;
+			}
+			}
+		
+	int sum=0;
+	for(int i=1;i<=num.length;i++){
+		sum+=i;
+	}
+	int getSum=0;
+	for(int i=0;i<num.length;i++) {
+		getSum+=num[i];
+	}
+	System.out.println(sum-getSum); 
+}
+}
+*/
+
+
+/*public class MissingNumber{
+	public static void main(String[] args) {
+		MissingNumber mNumber=new MissingNumber();
+		int[] a= {0,2,3};
+		int answer=new solution().missingNumber(a);
+		System.out.println(answer);
+		
+		}
+	}
+class solution {
+    public int missingNumber(int[] nums) {
+        int sum=0;
+	for(int i=1;i<=nums.length;i++){
+		sum+=i;
+	}
+	int getSum=0;
+	for(int i=0;i<nums.length;i++) {
+		getSum+=nums[i];
+	}
+	return(sum-getSum);
+        
+    }
+		
+	}
+  */
+
+
+
+
+
+/* 解法四：异或运算，很简单也很高效的方法，
+ * 将原数组增加0,1,2...N共N+1个数字进行扩展，丢失的数字只出现1次，其余都为2次；
+ * 遍历整个数组，依次做异或运算。
+ * 由于异或在位运算时相同为0，不同为1，
+ * 因此所有出现偶数次的整数都会相互抵消变成0，（自己异或自己为0，0异或他为他）
+ * 只有唯一出现奇数次的整数会被留下。假设数组长度是N，
+ * 那么该解法的时间复杂度是O（N），空间复杂度是O（1）。*/
+
+
+/*public class MissingNumber{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);//从键盘输入数字
+		System.out.println("请输入数组(用空格隔开）：");
+		String nums=sc.nextLine();
+		String[] number = nums.split(" ");//输入的字符串
+		int[] num=new int[2*number.length+1];//扩展后的数组，丢失的数字只出现1次，其余都为2次，便于异或
+		int[] primalNum=new int[number.length];	
+		int[] addNum=new int[number.length+1];
+		int sum=0;
+		for(int i = 0; i<number.length; i++){
+			primalNum[i] = Integer.valueOf(number[i]);//输入的字符串转化成的数组，字符串转化为整数
+			num[i] =primalNum[i];
+			}
+		for(int i = 0; i<=number.length; i++){
+			addNum[i] = Integer.valueOf(i);//用于扩展的数组[0 1 2... n],字符串转化为整数
+			num[i+number.length] =addNum[i];		
+			}
+		MissingNumber missingNumber=new MissingNumber();
+		//遍历数组进行异或运算
+		int[] finalresult=new int[8];
+		for(int i=0;i<num.length;i++) {
+			int[] num1=missingNumber.binaryToDecimal(num[i]);
+			finalresult=missingNumber.XOR(finalresult,num1);
+			}
+		//二进制转化成十进制
+		int coef=0;
+		for(int j=0;j<finalresult.length;j++) {
+			coef=(int)Math.pow(2,finalresult.length-j-1);// 求finalresult.length-j-1的平方
+			sum=sum+finalresult[j]*coef;
+		}
+		System.out.println(sum);	
+	}
+	//子程序：异或运算，相同位置一样为0，不一样为1
+	public int[] XOR(int[] x, int[] y){	
+	int[] result=new int[x.length];
+		for(int i=0;i<x.length;i++) {
+			if(x[i]==y[i]) {
+				result[i]=0;
+			}
+			else{
+					result[i]=1;	
+				}			
+		}
+		return result;			
+	}
+	//子程序：十进制转二进制
+	public int[] binaryToDecimal(int a){
+		int i=0;
+	      int[] result =new int[8]; //用来记录最后的二进制数
+	      int r = 0;  //用来存储余数
+	      while(a != 0){
+	          r = a % 2;
+	          a = a / 2;
+	          result[7-i]=r;
+	          i++;
+	     }
+	         return(result);
+	 }
+}
+*/
+
+
+
+
+		
+
+
+
+	 
+	      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
