@@ -33,28 +33,49 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+/**************************************************************
+當鍵表為單數時，在第一個while循環結束後慢指針會指向中間的那個元素，
+而快指針會指向最後一個元素，pre會指向第一個鏈表的頭結點。
+例：1->2->3->4->5
+執行完第一個while循環後:
+    1<-2->3->4->5
+       ^  ^     ^
+    prev  p1    p2
+所以在比較兩個分開後的鏈表時，將p2指向p1->next，將p1指向prev。
+
+
+當鍵表為雙數時，在第一個while循環結束後慢指針會指向第二個鏈表的頭結點，
+而快指針會指向NULL，pre會指向第一個鏈表的頭結點。
+例：1-2->3->4->5->6
+執行完第一個while循環後:
+    1<-2->3->4->5->6
+          ^  ^       ^
+       prev  p1      p2
+所以在比較兩個分開後的鏈表時，將p2指向p1，將p1指向prev。
+***************************************************************/
+
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        if(head == NULL) return true;
-        if(head->next == NULL) return true; //only one element
         ListNode *p1 = head; //slow pointer
         ListNode *p2 = head; // fast pointer
-        ListNode *pre = NULL, *p = NULL;
+        ListNode *prev = NULL, *p = NULL;
         while(p2 && p2->next) {
             p = p1;
             p1 = p1->next;
-            p2 = p2->next;
-            if(p2) p2 = p2->next;
-            p->next = pre;
-            pre = p;
+            p2 = p2->next->next;
+            p->next = prev;
+            prev = p;
         }
+        // p2 point to list2
         if(p2 == NULL) {
             p2 = p1;
         } else {
             p2 = p1->next;
         }
-        p1 = pre;
+        // p1 point to list1
+        p1 = prev;
+        // compare
         while(p1) {
             if(p1->val != p2->val) return false;
             p1 = p1->next;
