@@ -32,7 +32,7 @@ public:
             swap(a, b);
         }
         bool carry = false;
-        int a_end = a.size() - b.size();
+        int a_end = a.size() - b.size(); //a跟b尾對齊
         for(int i = b.size() - 1; i >= 0; i--) {
             if(a[a_end + i] == '1' && b[i] == '1') {
                 if(carry == true) {
