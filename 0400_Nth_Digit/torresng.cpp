@@ -40,16 +40,16 @@ class Solution {
 public:
     int findNthDigit(int n) {
         long count = 9;
-        int len = 1;
+        int i = 1;
         int start = 1;
-        while(n > count*len) {
+        while(n > count*i) {
             start += count;
-            n -= count*len;
+            n -= count*i;
             count *= 10;
-            len++;
+            i++;
         }
-        int posInRange = (n-1)/len;
-        int posInNum = (n-1)%len;
+        int posInRange = (n-1)/i;
+        int posInNum = (n-1)%i;
         int realNum = start + posInRange;
         string s = to_string(realNum);
         return s[posInNum] - '0';
