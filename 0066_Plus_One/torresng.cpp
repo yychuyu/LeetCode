@@ -34,25 +34,19 @@ class Solution {
 public:
     vector<int> plusOne(vector<int>& digits) {
         vector<int>::reverse_iterator rit = digits.rbegin();
-        vector<int> result;
-        int carry = 1;
         for(vector<int>::reverse_iterator rit = digits.rbegin();
                 rit != digits.rend(); rit++) {
-            *rit += carry;
+            *rit += 1;
             if(*rit == 10) {
                 *rit = 0;
-                carry = 1;
             } else {
-                carry = 0;
+                break;
             }
-            result.push_back(*rit);
         }
-        int size = result.size();
-        if(result[size-1] == 0) {
-            result.push_back(1);
+        if(digits[0] == 0) {
+            digits.insert(digits.begin(), 1);
         }
-        reverse(result.begin(), result.end());
-        return result;
+        return digits;
     }
 };
 
