@@ -21,7 +21,8 @@ public:
     }
     bool isP(ListNode* head){
         
-        if (head==NULL) return true;        
+        if (head==NULL) return true; 
+               
         bool re=isP(head->next); 
         if (re==false) return false;
         if ((*temp)->val!=(head->val)) return false;
