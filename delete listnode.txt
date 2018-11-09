@@ -1,0 +1,36 @@
+typedef struct ListNode {
+         int val;
+         struct ListNode *next;
+}*List;
+List delete_node(List head,int n)           //删除倒数第N个节点
+{
+    if(n == 1)
+    {
+        if(head->next == NULL)
+             return NULL;
+        List temp = head->next;
+        List pre = head;
+        while(temp->next != NULL)
+        {
+            temp = temp->next;
+            pre = pre->next;
+        }
+        pre->next = NULL;
+        return head;
+    }
+    List p1 = head;
+    List p2 = head;
+    int length = 0;
+    while(p1->next != NULL)
+    {
+        p1 = p1->next;
+        length++;
+    }
+    for(int i = 0;i < length-n;i++)
+    {
+        p2 = p2->next;
+    }
+    p2->val = p2->next->val;
+    p2->next = p2->next->next;
+    return head;
+}
