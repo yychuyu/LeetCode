@@ -12,4 +12,6 @@
 *.jar
 *.o
 *.iml
-
+.ipynb_checkpoints/
+.DS_Store
+*/.DS_Store
