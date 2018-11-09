@@ -7,7 +7,7 @@
 #		self.next = None
 
 class Solution:   # 执行用时:140ms
-	def isPalindrome(self,head):
+    def isPalindrome(self,head):
 		"""
         :type head: ListNode
         :rtype: bool
