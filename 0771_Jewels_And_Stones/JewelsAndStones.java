@@ -100,5 +100,9 @@ public class JewelsAndStones {
         System.out.println(count);
         System.out.println(countsJewelsInStones2(j,s));
     }
+	
+	
+	
+	
 
 }
