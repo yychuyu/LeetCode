@@ -1,0 +1,14 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+       
+       # print(type(nums))
+        #print(nums)
+       # print(len(nums))
+        #print(target)
+        for i in range(len(nums)):
+            answer = target - nums[i]
+            if answer in nums:
+                j = nums.index(answer)
+                if j != i:
+                    return(i,j)
+   
