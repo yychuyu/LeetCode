@@ -1,0 +1,17 @@
+.idea/
+*/.idea/
+*.pyc
+*.pyo
+*.pyd
+*/build/
+*/node_modules/
+*/output/
+*/out/
+*/target/
+*.class
+*.jar
+*.o
+*.iml
+.ipynb_checkpoints/
+.DS_Store
+*/.DS_Store
