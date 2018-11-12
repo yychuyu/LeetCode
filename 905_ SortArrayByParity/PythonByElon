@@ -3,6 +3,8 @@ class Solution(object):
         """
         :type A: List[int]
         :rtype: List[int]
+        60ms
+        86%
         """
         left = 0
         right = len(A) - 1
