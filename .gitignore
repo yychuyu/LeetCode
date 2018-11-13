@@ -16,3 +16,4 @@ output/
 .ipynb_checkpoints/
 .DS_Store
 */.DS_Store
+*.out
