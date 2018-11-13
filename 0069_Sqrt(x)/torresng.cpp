@@ -34,14 +34,14 @@ public:
         if(x <= 1) return x;
         int i = 0, j = x/2;
         while(i <= j) {
-            long z = i + (j - i)/2;
-            long mult = z * z;
+            long mid = i + (j - i)/2;
+            long mult = mid * mid;
             if(mult == x) {
-                return z;
+                return mid;
             } else if(mult > x) {
-                j = z - 1;
+                j = mid - 1;
             } else {
-                i = z + 1;
+                i = mid + 1;
             }
         }
         return j;
