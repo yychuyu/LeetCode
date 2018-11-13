@@ -1,4 +1,5 @@
 .idea/
+output/
 */.idea/
 *.pyc
 *.pyo
