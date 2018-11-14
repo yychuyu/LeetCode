@@ -34,7 +34,7 @@ public:
         if(x <= 1) return x;
         int i = 0, j = x/2;
         while(i <= j) {
-            long mid = i + (j - i)/2;
+            long mid = (i + j)/2; // i + (j - i)/2 = (2i + j - i)/2 = (i + j)/2
             long mult = mid * mid;
             if(mult == x) {
                 return mid;
