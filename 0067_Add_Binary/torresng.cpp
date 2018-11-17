@@ -28,49 +28,42 @@ using namespace std;
 class Solution {
 public:
     string addBinary(string a, string b) {
-        if(a.size() < b.size()) {
-            swap(a, b);
-        }
-        bool carry = false;
-        int a_end = a.size() - b.size(); //a跟b尾對齊
-        for(int i = b.size() - 1; i >= 0; i--) {
-            if(a[a_end + i] == '1' && b[i] == '1') {
-                if(carry == true) {
-                    a[a_end + i] = '1';
-                } else {
-                    a[a_end + i] = '0';
-                }
-                carry = true;
-            } else if(a[a_end + i] == '1' || b[i] == '1') {
-                if(carry == true) {
-                    a[a_end + i] = '0';
-                    carry = true;
-                } else {
-                    a[a_end + i] = '1';
-                    carry = false;
-                }
-            } else {
-                if(carry == true) {
-                    a[a_end + i] = '1';
-                }
-                carry = false;
+        int aIndx = a.size() - 1;
+        int bIndx = b.size() - 1;
+        int carry = 0;
+        int aVal;
+        int bVal;
+        int add;
+        string result;
+        while(aIndx >= 0 || bIndx >= 0) {
+            aVal = (aIndx >= 0) ? a[aIndx] - '0' : 0;
+            bVal = (bIndx >= 0) ? b[bIndx] - '0' : 0;
+            add = aVal + bVal + carry; 
+            switch(aVal + bVal + carry) {
+                case 3: 
+                    result += '1';
+                    carry = 1;
+                    break;
+                case 2:
+                    result += '0';
+                    carry = 1;
+                    break;
+                case 1:
+                    result += '1';
+                    carry = 0;
+                    break;
+                case 0:
+                    result += '0';
+                    carry = 0;
+                    break;
             }
+            --aIndx;
+            --bIndx;
         }
-        a_end--;
-        while(a_end >= 0) {
-            if(a[a_end] == '1' && carry == true) {
-                a[a_end] = '0';
-                carry = true;
-            } else if(a[a_end] == '1' || carry == true) {
-                a[a_end] = '1';
-                carry = false;
-            } else {
-                carry = false;
-            }
-            a_end--;
-        }
-        if(carry) a = "1" + a;
-        return a;
+        if(carry == 1) result += '1';
+        reverse(result.begin(), result.end());
+
+        return result;
     }
 };
 
