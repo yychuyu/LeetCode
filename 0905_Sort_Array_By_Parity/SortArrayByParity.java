@@ -1,6 +1,6 @@
 package com.company;
 
-public class Solution {
+public class SortArrayByParity {
     public int[] sortArrayByParity(int[] A) {
         if(A == null || A.length == 0 || A.length == 1)
             return A;
