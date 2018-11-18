@@ -30,21 +30,20 @@ Example 2:
     3. 2 steps + 1 step
 ***************************************************************/
 #include <iostream>
-#include <map>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
     int climbStairs(int n) {
-        static map<int, int> step {{1,1},{2,2},{3,3}};
-        auto it = step.find(n);
-        if(it != step.end()) {
-            return it->second;
+        vector<int> step(n);
+        step[0] = 1;
+        step[1] = 2;
+        for(int i = 2; i < n; i++) {
+            step[i] = step[i-1] + step[i-2];
         }
-        int result = climbStairs(n-1) + climbStairs(n-2);
-        step[n] = result;
-        return result; 
+        return step[n-1];
     }
 };
 
