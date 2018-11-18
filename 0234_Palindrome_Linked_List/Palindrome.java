@@ -11,6 +11,7 @@
 
 
 
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class Palindrome {
@@ -45,7 +46,6 @@ public class Palindrome {
             if (cur.val == s.peek()) {
                 s.pop();
                 cur = cur.next;
-                System.out.println(null != cur);
             }else{
                 return false;
             }
