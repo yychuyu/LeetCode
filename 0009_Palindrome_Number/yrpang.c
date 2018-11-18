@@ -34,4 +34,5 @@ int main()
     int input;
     scanf("%d",&input);
     printf("%d",isPalindrome(input));
+    return 0;
 }
