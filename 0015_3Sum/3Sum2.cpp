@@ -1,4 +1,4 @@
-//第16题的做法，96ms。
+//第16题的做法，92ms。
 /*
   题目：
   给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
@@ -20,6 +20,12 @@ public:
         if(len < 3){
             return rst;
         }
+        if(len==3){
+            if( 0==(nums[0]+nums[1]+nums[2]) ){
+                rst.push_back( vector<int>{nums[0],nums[1],nums[2]} );
+            }  
+            return rst;                      
+        }
       
         sort(nums.begin(),nums.end());//排序后相同的元素会相邻，所以“左右比较”就可以排除重复。
         
@@ -27,26 +33,24 @@ public:
             int left=i+1, right=len-1;
         
             while(left<right){
-                int sum=nums[left]+nums[right];
-                if(sum+nums[i]==0){                    
+                int sum=nums[i]+nums[left]+nums[right];
+                
+                if(sum<0){
+                    left++;
+                }else if(sum>0){
+                    right--;
+                }else{//sum==0 
                     vector<int> tmp={nums[i],nums[left],nums[right]};                    
                     rst.push_back(tmp);//这两句等于rst.push_back( {nums[i],nums[left],nums[right]} );                    
                     while( nums[left]==nums[left+1] ){//发现了相同的元素
                         left++;
                     }
                     left++;
-                    continue;
-                }
-                if(sum+nums[i]<0){
-                    left++;
-                }else{
-                    right--;
-                } 
+                }      
             }
             while( nums[i]==nums[i+1] ){//发现了相同的元素
                 i++;
-            }                
-        
+            }               
         }//end of for()
         
         return rst;
