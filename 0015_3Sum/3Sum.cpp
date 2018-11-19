@@ -1,4 +1,4 @@
-//第16题的做法，568ms，效率不高。
+//第16题的做法，576ms，效率不高。
 /*
   题目：
   给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
@@ -41,20 +41,20 @@ public:
             int left=i+1, right=len-1;
             
             while(left<right){
-                int sum=nums[left]+nums[right];
-                if(sum+nums[i]==0){
+                int sum=nums[i]+nums[left]+nums[right];
+                
+                if(sum<0){
+                    left++;
+                }else if(sum>0){
+                    right--;
+                }else{//sum==0
                     vector<int> tmp={nums[i],nums[left],nums[right]};
                     if( !isIn(rst,tmp) ){
                         rst.push_back(tmp);
                     }
-                }
-                if(sum+nums[i]<0){
                     left++;
-                }else{
-                    right--;
-                }                
-            }
-            
+                }                                           
+            }            
         }//end of for()
 
         return rst;        
