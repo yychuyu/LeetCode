@@ -1,0 +1,21 @@
+# Definition for an interval.
+# class Interval:
+#    def __init__(self, s=0, e=0):
+#        self.start = s
+#        self.end = e
+
+
+class Solution:
+
+    def merge(self, intervals:list):
+        """
+        :type intervals: List[Interval]
+        :rtype: List[Interval]
+        """
+        lst = []
+        for i in intervals.sort(key=lambda x: x.start):
+            if lst and lst[-1].end >= i.start:
+                lst[-1] = Interval(lst[-1].start, max(lst[-1].end, i.end))
+            else:
+                lst.append(i)
+        return lst
