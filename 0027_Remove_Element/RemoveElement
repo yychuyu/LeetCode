@@ -1,0 +1,38 @@
+class Solution {
+        public int removeElement(int[] nums, int val) {
+            int lengthNums = nums.length;
+            int pointer1 = 0;
+            int pointer2 = 0;
+            for( ; ( pointer1 < lengthNums ) && ( pointer2 < lengthNums ) ; ){
+                while( ( nums[pointer1] != val ) && ( pointer1 < lengthNums) ){
+                    pointer1++;
+                    if( pointer1 >= lengthNums ){
+                        break;
+                    }
+                }
+
+                while( ( nums[pointer2] == val ) && ( pointer2 < lengthNums ) ){
+                    pointer2++;
+                    if( pointer2 >= lengthNums ){
+                        break;
+                    }
+                }
+
+                if( ( pointer1 >= lengthNums ) || ( pointer2 >= lengthNums ) ){
+                    break;
+                }
+
+                if( pointer1 > pointer2 ){
+                    pointer2++;
+                    continue;
+                }
+
+                nums[pointer1] = nums[pointer2];
+                nums[pointer2] = val;
+                pointer1++;
+
+            }
+
+            return pointer1;
+        }
+    }
