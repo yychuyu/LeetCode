@@ -47,26 +47,24 @@ public:
     bool isSymmetric(TreeNode* root) {
         if(!root) return true;
         deque<TreeNode*> d;
-        TreeNode *left, *right;
+        TreeNode *preNode, *postNode;
         d.push_front(root->left);
         d.push_back(root->right);
         while(d.size()) {
-            left = d.front(); 
-            right = d.back();
+            preNode = d.front(); 
+            postNode = d.back();
             d.pop_front();
             d.pop_back();
-            if(!left && !right) continue;
-            if((left && !right) 
-                || (!left && right)
-                || (left && right && left->val != right->val)
-                ) 
-            {
+            if(!preNode && !postNode) continue;
+            if(!preNode || !postNode) return false;
+            if(preNode->val != postNode->val)  {
                 return false;
+            } else {
+                d.push_front(preNode->right);
+                d.push_back(postNode->left);
+                d.push_front(preNode->left);
+                d.push_back(postNode->right);
             }
-            d.push_front(left->right);
-            d.push_back(right->left);
-            d.push_front(left->left);
-            d.push_back(right->right);
         }
         return true;
     }
