@@ -28,7 +28,6 @@ Note:
 Bonus points if you could solve it both recursively and iteratively. 
 ***************************************************************/
 #include <iostream>
-#include <deque>
 
 using namespace std;
 
@@ -114,6 +113,3 @@ int main(void) {
 
     return 0;
 }
-
-
-
