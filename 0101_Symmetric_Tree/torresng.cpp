@@ -46,27 +46,15 @@ class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
         if(!root) return true;
-        deque<TreeNode*> d;
-        TreeNode *preNode, *postNode;
-        d.push_front(root->left);
-        d.push_back(root->right);
-        while(d.size()) {
-            preNode = d.front(); 
-            postNode = d.back();
-            d.pop_front();
-            d.pop_back();
-            if(!preNode && !postNode) continue;
-            if(!preNode || !postNode) return false;
-            if(preNode->val != postNode->val)  {
-                return false;
-            } else {
-                d.push_front(preNode->right);
-                d.push_back(postNode->left);
-                d.push_front(preNode->left);
-                d.push_back(postNode->right);
-            }
-        }
-        return true;
+        return compare(root->left, root->right);
+    }
+
+private:
+    bool compare(TreeNode *p1, TreeNode *p2) {
+        if(!p1 && !p2) return true;
+        if(!p1 || !p2) return false;
+        if(p1->val != p2->val) return false;
+        return compare(p1->left, p2->right) && compare(p1->right, p2->left);
     }
 };
 
