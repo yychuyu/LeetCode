@@ -42,21 +42,9 @@ struct TreeNode {
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        check(root);
-        return max;
+        if(root == nullptr) return 0;
+        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
     }
-private:
-    void check(TreeNode* p) {
-        if(p) {
-            result++;
-            if(result > max) max = result;
-            check(p->left);
-            check(p->right);
-            result--;
-        }
-    }
-    int result = 0;
-    int max = 0;
 };
 
 int main(void) {
