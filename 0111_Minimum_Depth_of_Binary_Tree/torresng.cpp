@@ -1,5 +1,5 @@
 /***************************************************************
-*   Copyright (C) 2018 All rights reserved.
+
 *
 *   Auth     ：Torres Ng
 *   Create Time ：2018/11/25
@@ -44,9 +44,22 @@ class Solution {
 public:
     int minDepth(TreeNode* root) {
         if(root == nullptr) return 0;
-        if(root->left && !root->right) return minDepth(root->left) + 1;
-        if(!root->left && root->right) return minDepth(root->right) + 1;
-        return min(minDepth(root->left), minDepth(root->right)) + 1;
+        queue<TreeNode*> q;
+        q.push(root);
+        int depth = 1;
+        for(int depth = 1; !q.empty(); depth++) {
+            int s = q.size();
+            for(int i = 0; i < s; i++) {
+                TreeNode *p = q.front();
+                q.pop();
+                if(p->left == nullptr && p->right == nullptr) {
+                    return depth;
+                }
+                if(p->left) q.push(p->left);
+                if(p->right) q.push(p->right);
+            }
+        }
+        return -1;
     }
 };
 
