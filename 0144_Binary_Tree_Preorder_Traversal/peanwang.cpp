@@ -1,4 +1,4 @@
-// µÝ¹é°æ
+// recursion version
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
@@ -14,7 +14,7 @@ public:
         preorder(root->right,data);
     }
 };
-// ·ÇµÝ¹é
+// non-recursion version
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
