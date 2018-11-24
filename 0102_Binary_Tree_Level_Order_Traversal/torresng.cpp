@@ -29,7 +29,6 @@ return its level order traversal as:
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <utility>
 
 using namespace std;
 
@@ -44,30 +43,26 @@ struct TreeNode {
 };
 
 class Solution {
-    public:
-        vector<vector<int>> levelOrder(TreeNode* root) {
-            if(root == nullptr) return {};
-            vector<vector<int>> result;
-            queue<pair<TreeNode*, int>> q;
-            pair<TreeNode*, int> p;
-            TreeNode *node;
-            int level;
-            q.push(make_pair(root, 1));
-            while(!q.empty()) {
-                p = q.front();
-                node = p.first;
-                level = p.second;
-                if(level > result.size()) {
-                    result.push_back({node->val});
-                } else {
-                    result[level-1].push_back(node->val);
-                }
-                if(node->left) q.push(make_pair(node->left, level+1));
-                if(node->right) q.push(make_pair(node->right, level+1));
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        if(root == nullptr) return res;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+            vector<int> temp;
+            size_t s = q.size();
+            for(int i = 0; i < s; i++) {
+                TreeNode* p = q.front();
                 q.pop();
+                temp.push_back(p->val);
+                if(p->left) q.push(p->left);
+                if(p->right) q.push(p->right);
             }
-            return result;
+            res.push_back(temp);
         }
+        return res;
+    }
 };
 
 string join(const vector<int>& v, string c) {
