@@ -14,7 +14,6 @@ public class Test0001 {
 		for (int temp : res) {
 			System.out.print(temp + "\t");
 		}
-		
 	}
 	
 	/**
