@@ -1,6 +1,9 @@
 
 # Example 1:
 
+# email:fansluck@qq.com
+# wechat:fanshengluck2
+
 # Input:
 # [
 #  [ 1, 2, 3 ],
@@ -24,17 +27,23 @@ class Solution:
         :type matrix: List[List[int]]
         :rtype: List[int]
         """
-        cell_add=1
+        layer=1
         re=[]
         if matrix==[]:return []
         y_top,x_top=len(matrix),len(matrix[0])
         while True:
-            xl=cell_add;xr=x_top-(cell_add-1);yt=cell_add;yb=y_top-(cell_add-1)
-            if xl>xr or yt>yb:return re
-            re.extend([matrix[yt-1][cell] for cell in range(xl-1,xr,1)])
-            if yt==yb:return re
-            re.extend([matrix[cell][xr-1] for cell in range(yt,yb,1)])
-            if xl==xr:return re
-            re.extend([matrix[yb-1][cell] for cell in range(xr-2,xl-1,-1)])
-            re.extend([matrix[cell][xl-1] for cell in range(yb-1,yt-1,-1)])
-            cell_add+=1
+            xr=x_top-(layer-1);yb=y_top-(layer-1)
+            if layer>xr or layer>yb:return re
+            elif layer==yb :
+                re.extend(matrix[layer-1][layer-1:xr])
+            elif layer==xr and layer<yb:
+                for i in range(layer-1,yb):
+                    re.append(matrix[i][layer-1])
+            else:
+                re.extend(matrix[layer-1][layer-1:xr])
+                for cell in range(layer,yb,1):
+                    re.append(matrix[cell][xr-1])
+                re.extend(matrix[yb-1][xr-2:layer-1:-1])
+                for cell in range(yb-1,layer-1,-1):
+                    re.append(matrix[cell][layer-1])
+            layer+=1
