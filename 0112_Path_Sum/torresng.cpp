@@ -25,7 +25,6 @@ return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 ***************************************************************/
 #include <iostream>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
