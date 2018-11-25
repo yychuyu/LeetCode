@@ -27,6 +27,11 @@ But the following [1,2,2,null,3,null,3] is not:
 Note:
 Bonus points if you could solve it both recursively and iteratively. 
 ***************************************************************/
+
+/*
+ *http://blog.torresng.com/2018/11/23/LeetCode-No-101-Submission-Detail/
+ */
+
 #include <iostream>
 
 using namespace std;
