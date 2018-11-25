@@ -4,12 +4,12 @@ yanhang
 Alvin
 守望 8f6752e251e8cdb8e15daee9da39b93d67b6d3ef 
 戴阳
-Vincent
+Vincent     commit 45db4b04e74ea45d9159499d65820f02068dce68
 Torres@Ng
 404 Not Found
 罗全
-Howie Lee
-林礼嘉
+Howie Lee  commit 34ebd5992a09dad859d4b4f6a3f5ab34ebf1e05c
+林礼嘉       commit acc684674bd7d7dedfd9f9ea4d51c394be9caf56
 飘雨^～^
 。。。De
 。
