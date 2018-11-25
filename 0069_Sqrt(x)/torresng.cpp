@@ -32,13 +32,12 @@ class Solution {
 public:
     int mySqrt(int x) {
         if(x <= 1) return x;
-        int i = 0, j = x/2;
+        int i = 0, j = x;
         while(i <= j) {
-            long mid = i + (j - i)/2;
-            long mult = mid * mid;
-            if(mult == x) {
+            int mid = (i + j)/2; // i + (j - i)/2 = (2i + j - i)/2 = (i + j)/2
+            if(mid == x/mid) {
                 return mid;
-            } else if(mult > x) {
+            } else if(mid > x/mid) {
                 j = mid - 1;
             } else {
                 i = mid + 1;
