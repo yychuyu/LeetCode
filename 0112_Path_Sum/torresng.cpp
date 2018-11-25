@@ -43,11 +43,16 @@ class Solution {
 public:
     bool hasPathSum(TreeNode* root, int sum) {
         if(root == nullptr) return false;
-        sum -= root->val;
-        if(root->left == nullptr 
-            && root->right == nullptr && sum == 0) return true;
-        if(hasPathSum(root->left, sum)) return true;
-        if(hasPathSum(root->right, sum)) return true;
+        if(root->left == nullptr && root->right == nullptr) {
+            return root->val == sum;
+        }else if(root->left && root->right) {
+            return hasPathSum(root->left, sum - root->val) ||
+                hasPathSum(root->right, sum - root->val);
+        }else if(root->left) {
+            return hasPathSum(root->left, sum - root->val);
+        }else if(root->right) {
+            return hasPathSum(root->right, sum - root->val);
+        }
         return false;
     }
 };
