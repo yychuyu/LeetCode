@@ -29,17 +29,21 @@ class Solution {
 public:
     bool isPalindrome(string s) {
         if(s.empty()) return true;
-        string temp;
-        for(char c : s) {
-            if(c >= 'A' && c <= 'Z') {
-                temp += (c + 32);
-            } else if((c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
-                temp += c;
+        int start = 0, end = s.size()-1;
+        while(start < end) {
+            if(!isalnum(s[start])) {
+                ++start;
+                continue;
             }
-        }
-        size_t size = temp.size();
-        for(int i = 0; i < size/2; i++) {
-            if(temp[i] != temp[size-i-1]) return false;
+            if(!isalnum(s[end])) {
+                --end;
+                continue;
+            }
+            if(tolower(s[start]) != tolower(s[end])) {
+                return false;
+            }
+            ++start;
+            --end;
         }
         return true;
     }
