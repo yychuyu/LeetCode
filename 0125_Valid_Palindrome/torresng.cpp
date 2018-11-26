@@ -33,17 +33,14 @@ public:
         while(start < end) {
             if(!isalnum(s[start])) {
                 ++start;
-                continue;
-            }
-            if(!isalnum(s[end])) {
+            } else if(!isalnum(s[end])) {
                 --end;
-                continue;
-            }
-            if(tolower(s[start]) != tolower(s[end])) {
+            } else if(tolower(s[start]) != tolower(s[end])) {
                 return false;
+            } else {
+                ++start;
+                --end;
             }
-            ++start;
-            --end;
         }
         return true;
     }
