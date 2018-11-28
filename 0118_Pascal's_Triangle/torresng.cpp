@@ -34,18 +34,13 @@ public:
     vector<vector<int>> generate(int numRows) {
         vector<vector<int>> res;
         if(numRows <= 0) return res;
-        int idx = 0, len = 1;
-        for(int i = 0; i < numRows; i++) {
-            vector<int> temp(len);
-            temp[idx] = temp[len-1] = 1;
-            idx++;
-            while(idx < len-1) {
-                temp[idx] = res[i-1][idx-1] + res[i-1][idx];
-                idx++;
+        for(int n = 0; n < numRows; n++) {
+            vector<int> temp(n+1);
+            temp[0] = temp[n] = 1;
+            for(int i = 1; i < n; i++) {
+                temp[i] = res[n-1][i-1] + res[n-1][i];
             }
             res.push_back(temp);
-            len++;
-            idx = 0;
         }
         return res;
     }
