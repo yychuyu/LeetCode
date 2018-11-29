@@ -24,8 +24,6 @@ Example:
     'e' is the letter that was added.
 ***************************************************************/
 #include <iostream>
-#include <vector>
-#include <queue>
 #include <string>
 
 using namespace std;
