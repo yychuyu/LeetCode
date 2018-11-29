@@ -33,15 +33,14 @@ using namespace std;
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
-        int i = 0, j = 0;
-        while(j < t.size()) {
-            if(s[i] != t[j]) break;
-            i++;
-            j++;
+        char res = 0;
+        for(char c : s) {
+            res ^= c;
         }
-        return t[j];
+        for(char c : t) {
+            res ^= c;
+        }
+        return res;
     }
 };
 
