@@ -38,10 +38,12 @@ public:
     }
     
     void push(int x) {
+        if(minStack.empty() || x <= minStack.back()) minStack.push_back(x);
         stack.push_back(x);
     }
     
     void pop() {
+        if(minStack.back() ==  stack.back()) minStack.pop_back();
         stack.pop_back();
     }
     
@@ -50,11 +52,7 @@ public:
     }
     
     int getMin() {
-        int min = INT_MAX;
-        for(int v : stack) {
-            if(min > v) min = v;
-        }
-        return min;
+        return minStack.back();
     }
 
 private:
