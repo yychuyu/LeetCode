@@ -48,9 +48,25 @@ public:
     TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
         if(t1 == nullptr) return t2;
         if(t2 == nullptr) return t1;
-        t1->val += t2->val;
-        t1->left = mergeTrees(t1->left, t2->left);
-        t1->right = mergeTrees(t1->right, t2->right);
+        queue<TreeNode*> q1, q2;
+        q1.push(t1);
+        q2.push(t2);
+        while(!q1.empty()) {
+            TreeNode *p1 = q1.front(), *p2 = q2.front();
+            q1.pop();
+            q2.pop();
+            if(p1) {
+                q1.push(p1->left);
+                q1.push(p1->right);
+                q2.push(p2 ? p2->left : nullptr);
+                q2.push(p2 ? p2->right : nullptr);
+            }
+            if(p1 && p2) {
+                p1->val += p2->val;
+                if(!p1->left) p1->left = p2->left;
+                if(!p1->right) p1->right = p2->right;
+            }
+        }
         return t1;
     }
 };
