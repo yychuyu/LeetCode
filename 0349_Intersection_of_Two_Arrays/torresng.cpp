@@ -26,7 +26,7 @@ Note:
 #include <iostream>
 #include <vector>
 #include <string>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -34,12 +34,9 @@ class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         vector<int> res;
-        set<int> s;
-        for(int v : nums1) {
-            s.insert(v);
-        }
+        unordered_set<int> s(nums1.begin(), nums1.end());
         for(int v : nums2) {
-            set<int>::iterator it = s.find(v);
+            unordered_set<int>::iterator it = s.find(v);
             if(it != s.end()) {
                 res.push_back(*it);
                 s.erase(it);
