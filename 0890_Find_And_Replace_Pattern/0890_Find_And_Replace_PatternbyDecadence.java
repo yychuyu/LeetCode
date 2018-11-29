@@ -38,11 +38,6 @@ class Solution890{
             }
         }
         return true;
-
-
-
-
-        
     }
     public List<String> findAndReplacePattern(String[] words, String pattern){
         List<String> list = new ArrayList<>();
