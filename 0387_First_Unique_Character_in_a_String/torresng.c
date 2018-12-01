@@ -22,13 +22,22 @@ Note: You may assume the string contain only lowercase letters.
 #include <string.h>
 
 int firstUniqChar(char* s) {
-    int arr[27] = {0};
-    int len = strlen(s);
-    for(int i = 0; i < len; i++) {
-        arr[s[i] - 'a']++;
+    char *c = s;
+    unsigned set1 = 0;
+    unsigned set2 = 0;
+    while(*c) {
+        unsigned i = 1 << (*c - 'a');
+        set2 |= set1 & i;
+        set1 |= i;
+        c++;
     }
-    for(int i = 0; i < len; i++) {
-        if(arr[s[i] - 'a'] == 1) return i;
+    c = s;
+    while(*c) {
+        unsigned i = 1 << (*c - 'a');
+        if((set2 & i) == 0) {
+            return c - s;
+        }
+        c++;
     }
     return -1;
 }
