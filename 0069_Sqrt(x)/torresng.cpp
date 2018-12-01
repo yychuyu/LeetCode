@@ -32,19 +32,25 @@ class Solution {
 public:
     int mySqrt(int x) {
         if(x <= 1) return x;
-        long i;
-        for(i=1; i <= x/2; i++) {
-            if(i*i > x) {
-                break;
+        int i = 0, j = x;
+        while(i <= j) {
+            int mid = (i + j)/2; // i + (j - i)/2 = (2i + j - i)/2 = (i + j)/2
+            if(mid == x/mid) {
+                return mid;
+            } else if(mid > x/mid) {
+                j = mid - 1;
+            } else {
+                i = mid + 1;
             }
         }
-        return i - 1;
+        return j;
     }
 };
 
 int main(void) {
     Solution s = Solution();
     cout << "4: " << s.mySqrt(4) << endl;
+    cout << "6: " << s.mySqrt(6) << endl;
     cout << "8: " << s.mySqrt(8) << endl;
     cout << "2147395600: " << s.mySqrt(2147395600) << endl;
     return 0;
