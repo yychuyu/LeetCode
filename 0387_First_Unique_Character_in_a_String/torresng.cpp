@@ -20,35 +20,21 @@ Note: You may assume the string contain only lowercase letters.
 ***************************************************************/
 #include <iostream>
 #include <string>
-#include <unordered_set>
+#include <vector>
 
 using namespace std;
 
 class Solution {
 public:
     int firstUniqChar(string s) {
-        if(s.size() == 0) return -1;
-        int res = -1;
-        unordered_set<int> set1;
-        unordered_set<int> set2;
-        for(int c : s) {
-            if(set2.find(c) == set2.end()) {
-                unordered_set<int>::iterator it = set1.find(c);
-                if(it == set1.end()) {
-                    set1.insert(c);
-                } else {
-                    set1.erase(it);
-                    set2.insert(c);
-                }
-            }
+        vector<int> vec(27, 0);
+        for(char c : s) {
+            vec[c-'a']++;
         }
-        if(!set1.empty()) {
-            for(int i = 0; i < s.size(); i++) {
-                if(set1.find(s[i]) != set1.end())
-                    return i;
-            }
+        for(int i = 0; i < s.size(); i++) {
+            if(vec[s[i]-'a'] == 1) return i;
         }
-        return res;
+        return -1;
     }
 };
 
