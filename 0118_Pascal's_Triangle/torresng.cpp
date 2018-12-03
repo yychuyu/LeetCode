@@ -37,9 +37,8 @@ public:
         while(k <= rowIndex) {
             res[0] = res[k] = 1;
             for(int i = 1; i < k; i++) {
-                add = temp;
                 temp = res[i];
-                res[i] = add + temp;
+                res[i] += add;
                 add = temp;
             }
             k++;
