@@ -23,18 +23,13 @@ using namespace std;
 class Solution {
 public:
     string reverseWords(string s) {
-        string::iterator iter1 = s.begin(), iter2 = s.begin();
-        while(iter2 != s.end()) {
-            if(*iter2 == ' ') {
-                reverse(iter1, iter2);
-                iter2++;
-                iter1 = iter2;
-            } else {
-                iter2++;
+        int start = 0, end = 0, len = s.size();
+        while(end < len) {
+            while(end < len && s[end] != ' ') end++;
+            for(int i = start, j = end - 1; i < j; i++, j--) {
+                swap(s[i], s[j]);
             }
-        }
-        if(iter2 - iter1 > 1) {
-            reverse(iter1, iter2);
+            start = ++end;
         }
         return s;
     }
