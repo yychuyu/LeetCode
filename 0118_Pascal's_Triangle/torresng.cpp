@@ -31,33 +31,50 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> res;
-        if(numRows <= 0) return res;
-        for(int n = 0; n < numRows; n++) {
-            vector<int> temp(n+1);
-            temp[0] = temp[n] = 1;
-            for(int i = 1; i < n; i++) {
-                temp[i] = res[n-1][i-1] + res[n-1][i];
+    vector<int> getRow(int rowIndex) {
+        if(rowIndex == 0) return {1};
+        vector<int> extra(rowIndex,1);
+        vector<int> res(rowIndex + 1);
+        int k = 0;
+        while(k <= rowIndex) {
+            res[0] = res[k] = 1;
+            for(int i = 1; i < k; i++) {
+                res[i] = extra[i-1] + extra[i];
             }
-            res.push_back(temp);
+            for(int i = 0; i < k; i++) {
+                extra[i] = res[i];
+            }
+            k++;
         }
         return res;
     }
 };
 
+template<class T>
+string join(const vector<T>& v, string c) {
+    string s;
+    for (typename vector<T>::const_iterator p = v.begin();
+            p != v.end(); ++p) {
+        s += to_string(*p);
+        if (p != v.end() - 1)
+            s += c;
+    }
+    return "[" + s + "]";
+}
+
 int main(void) {
     Solution s = Solution();
     // Example 1
-    int numRows = 5;
-    cout << "5: " << endl;
-    auto res = s.generate(5);
-    for(auto v : res) {
-        for(auto i : v) {
-            cout << i << " ";
-        }   
-        cout << endl;
-    }
+    int k = 3;
+    cout << "Input: 3" << endl << "Output: " << join(s.getRow(k), ",") << endl;
 
+    k = 5;
+    cout << "Input: 5" << endl << "Output: " << join(s.getRow(k), ",") << endl;
+
+    k = 0;
+    cout << "Input: 0" << endl << "Output: " << join(s.getRow(k), ",") << endl;
+
+    k = 6;
+    cout << "Input: 6" << endl << "Output: " << join(s.getRow(k), ",") << endl;
     return 0;
 }
