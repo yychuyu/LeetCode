@@ -32,17 +32,15 @@ using namespace std;
 class Solution {
 public:
     vector<int> getRow(int rowIndex) {
-        if(rowIndex == 0) return {1};
-        vector<int> extra(rowIndex,1);
         vector<int> res(rowIndex + 1);
-        int k = 0;
+        int temp = 1, add = 1, k = 0;
         while(k <= rowIndex) {
             res[0] = res[k] = 1;
             for(int i = 1; i < k; i++) {
-                res[i] = extra[i-1] + extra[i];
-            }
-            for(int i = 0; i < k; i++) {
-                extra[i] = res[i];
+                add = temp;
+                temp = res[i];
+                res[i] = add + temp;
+                add = temp;
             }
             k++;
         }
