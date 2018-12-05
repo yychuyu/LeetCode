@@ -26,7 +26,8 @@ Notes:
     * Your code should preferably run in O(n) time and use only O(1) memory.
 ***************************************************************/
 #include <iostream>
-#include <vector>
+#include <unordered_map>
+#include <string>
 
 using namespace std;
 
@@ -82,18 +83,26 @@ int main(void) {
     ListNode *node2 = new ListNode(3);
     ListNode *node3 = new ListNode(4);
     ListNode *node4 = new ListNode(5);
-    ListNode *node5 = new ListNode(6);
     head1->next = node1;
     node1->next = node2;
     node2->next = node3;
-    node4->next = node5;
 
-    ListNode *head2 = new ListNode(7);
+    ListNode *head2 = new ListNode(6);
+    ListNode *node5 = new ListNode(7);
     ListNode *node6 = new ListNode(8);
-    ListNode *node7 = new ListNode(9);
-    head2->next = node6;
-    node6->next = node7;
-    node7->next = node2;
+    head2->next = node5;
+    node5->next = node6;
+    node6->next = node2;
+
+    unordered_map<ListNode*, string> mapping;
+    mapping.insert({head1, "a1"});
+    mapping.insert({node1, "a2"});
+    mapping.insert({node2, "c1"});
+    mapping.insert({node3, "c2"});
+    mapping.insert({node4, "c3"});
+    mapping.insert({head2, "b1"});
+    mapping.insert({node5, "b2"});
+    mapping.insert({node6, "b3"});
 
     cout << "A:          a1 → a2" << endl;
     cout << "                   ↘" << endl;
@@ -102,8 +111,12 @@ int main(void) {
     cout << "B:     b1 → b2 → b3" << endl;
 
     ListNode *res = s.getIntersectionNode(head1, head2);
-    cout << res->val << endl;
+    if(res) {
+        unordered_map<ListNode*, string>::iterator iter = mapping.find(res);
+        cout << "Intersection Node: " << iter->second << endl;
+    } else {
+        cout << "Intersection Node: " << endl;
+    }
 
     return 0;
 }
-
