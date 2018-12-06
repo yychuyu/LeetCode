@@ -1,3 +1,9 @@
 commit 9e872bb94cf35ea5322f321a8cc092d69dc49191
 Author: 2551247912@qq.com <2551247912@qq.com>
 Date:   Sun Dec 2 14:21:53 2018 +0800
+
+commit ca95228225c484b171887a089a1de93622098a89
+Author: 2551247912@qq.com <2551247912@qq.com>
+Date:   Thu Dec 6 15:03:32 2018 +0800
+
+    add two numbers II by pingtou
