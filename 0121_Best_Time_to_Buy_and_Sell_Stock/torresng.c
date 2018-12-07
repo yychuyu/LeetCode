@@ -25,32 +25,28 @@ Example 2:
     Output: 0
     Explanation: In this case, no transaction is done, i.e. max profit = 0.
 ***************************************************************/
+#include <stdio.h>
+#include <limits.h>
 
-#include <iostream>
-#include <vector>
-#include <limits>
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
-using namespace std;
-
-class Solution {
-public:
-    int maxProfit(vector<int>& prices) {
-        int buy = numeric_limits<int>::max(), res = 0;
-        for(int price : prices) {
-            buy = min(buy, price);
-            res = max(res, price - buy);
-        }
-        return res;
+int maxProfit(int* prices, int pricesSize) {
+    int buy = INT_MAX, res = 0;
+    for(int i = 0; i < pricesSize; i++) {
+        buy = MIN(buy, prices[i]);
+        res = MAX(res, prices[i] - buy);
     }
-};
+    return res;
+}
 
 
 int main(void) {
-	Solution s = Solution();
-
-    vector<int> vec {7,1,5,3,6,4};
-	cout << "Input: [7,1,5,3,6,4]" << endl << "Output: " << s.maxProfit(vec) << endl;
-    vec = {7,6,4,3,1};
-	cout << "Input: [7,6,4,3,1]" << endl << "Output: " << s.maxProfit(vec) << endl;
+    int vec1[] = {7,1,5,3,6,4};
+    int size = 6;
+    printf("Input: [7,1,5,3,6,4]\nOutput: %d\n", maxProfit(vec1, size));
+    int vec2[] = {7,6,4,3,1};
+    size = 5;
+    printf("Input: [7,6,4,3,1]\nOutput: %d\n", maxProfit(vec2, size));
 	return 0;
 }
