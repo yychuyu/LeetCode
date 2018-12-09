@@ -8,46 +8,44 @@ email:  fansluck@qq.com
 
 class Solution {
 public:
-    int calculate(string s) {
-       return  backStone(s);
-    }
-    int backStone(string s){
-        stack<int> backSS;
-        stack<char> sign;
+     int calculate(string s) {
+       stack<int> backSS;
         char tempSign;
         int res,tempPush=0;
         int leftInt,rightInt;
         bool flag=false;
-        for(int i=0;i<s.size();i++){
+        for(int i=0;;i++){
             if (s[i]==' ') continue;
-            
             else if (s[i]=='+'| s[i]=='-'){
-                sign.push(s[i]);
+                backSS.push(s[i]);
                 flag=true; 
                  
             }
             else if (s[i]=='('){
-                sign.push(s[i]);
                 flag=false;
             }
             else if (s[i]==')'){
-                // if (sign.pop()!='(')  return /'字符串违法'/
-                sign.pop();
-                if (sign.empty()) continue;
-                
+                // if (sign.pop()!='(')  return /'字符串违法'
                 rightInt=backSS.top();
                 backSS.pop();
+
                 // if backSS.empty() return /'字符串违法'/
-                leftInt=backSS.top();
+                if (backSS.empty()) {
+                    backSS.push(rightInt);
+                    continue;
+                    }
+
+                tempSign=backSS.top();  // if exception return /'字符串违法'/
                 backSS.pop();
-                tempSign=sign.top();
-                sign.pop();
+                
+                leftInt=backSS.top();   // if exception return /'字符串违法'/
+                backSS.pop();
+
                 if (tempSign=='-') 
                     res=leftInt-rightInt;
                 else res=leftInt+rightInt;
                 backSS.push(res);
                 flag=true;
-
                 }
             else if (s[i]=='\0'){
                 break;
@@ -60,10 +58,12 @@ public:
                     continue;
                 else rightInt=tempPush;
                 // if backSS.empty() return /'字符串违法'/
+                tempSign=backSS.top();
+                backSS.pop();
+                
                 leftInt=backSS.top();
                 backSS.pop();
-                tempSign=sign.top();
-                sign.pop();
+               
                 if (tempSign=='-') 
                     res=leftInt-rightInt;
                 else res=leftInt+rightInt;
@@ -84,5 +84,5 @@ public:
         backSS.pop();
         // if (!backSS.empty()) return /'字符串违法'/
         return res;
-        }
+    }
 };
