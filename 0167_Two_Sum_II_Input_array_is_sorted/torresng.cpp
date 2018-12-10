@@ -23,25 +23,22 @@ Example:
 ***************************************************************/
 #include <iostream>
 #include <vector>
-#include <unordered_map>
-#include <utility>
 
 using namespace std;
 
 class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {
-        unordered_map<int, int> umap;
-        int sub;
-        for(int i = 0; i < numbers.size(); i++) {
-            sub = target - numbers[i];
-            unordered_map<int, int>::iterator iter = umap.find(sub);
-            if(umap.find(sub) != umap.end()) {
-                return {iter->second+1, i+1};
+        int n = numbers.size();
+        int i = 0, j = n - 1;
+        while(numbers[i] + numbers[j] != target) {
+            if(numbers[i] + numbers[j] > target) {
+                j--;
+            } else {
+                i++;
             }
-            umap[numbers[i]] = i;
         }
-        return {};
+        return {i+1, j+1};
     }
 };
 
