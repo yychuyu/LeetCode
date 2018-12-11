@@ -35,42 +35,24 @@ Example 3:
     Output: "ZY"
 ***************************************************************/
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-void reverse(char*, int, int);
+#define MAX_COL_LEN (100)
+#define BASE (26)
 
 char* convertToTitle(int n) {
-    int mallocSize = 2;
-    int size = 0;
-    char *res = (char*)malloc(sizeof(char) * mallocSize + 1);
+    char col[MAX_COL_LEN];
+    int i = MAX_COL_LEN - 1;
+
+    if(n <= 0)
+        return strdup("");
+    
+    col[i--] = '\0';
     while(n > 0) {
-        size++;
-        if(size > mallocSize) {
-            mallocSize *= 2;
-            res = realloc(res, sizeof(char) * mallocSize + 1);
-        }
-        res[size - 1] = 'A' + (n - 1) % 26;
-        n = (n - 1) / 26;
-        res[size] = '\0';
+        col[i--] = (n - 1) % BASE + 'A';
+        n = (n - 1) / BASE;
     }
-    reverse(res, 0, size);
-    return res;
-}
-
-void reverse(char *str, int begin, int end) {
-    if(begin > end) {
-        return;
-    }
-
-    char c;
-    while(begin < end - 1) {
-        c = str[begin];
-        str[begin] = str[end - 1];
-        str[end-1] = c;
-        begin++;
-        end--;
-    }
+    return strdup(&col[i + 1]);
 }
 
 int main(void) {
