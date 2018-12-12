@@ -29,15 +29,15 @@ using namespace std;
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int, int> umap;
-        int res = -1;
-        int max = 0;
+        int res, count = 0;
         for(int num : nums) {
-            umap[num]++;
-            if(umap[num] > max) {
+            if(count == 0) {
                 res = num;
-                max = umap[num];
+                count = 1;
+            } else {
+                count += (res == num) ? 1 : -1;
             }
+
         }
         return res;
     }
