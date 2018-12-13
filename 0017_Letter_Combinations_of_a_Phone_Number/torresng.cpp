@@ -31,22 +31,19 @@ class Solution {
 public:
     vector<string> letterCombinations(string digits) {
         vector<string> res;
-        vector<string> index {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-        int idx = digits[0] - '0';
-        for(char letter : index[idx]) res.push_back(string(1,letter));
-        for(int i = 1; i < digits.size(); i++) {
-            idx = digits[i] - '0';
-            vector<string> temp;
-            for(char letter: index[idx]) {
-                for(string t : res) {
-                    temp.push_back(t + letter);
+        if(digits.size() > 0) {
+            vector<string> temp = letterCombinations(digits.substr(1, digits.size() - 1));
+            if(temp.size() == 0) temp.push_back("");
+            for(char c : index[digits[0] - '0']) {
+                for(string str : temp) {
+                    res.push_back(c + str);
                 }
             }
-            res = temp;
-            temp.clear();
         }
         return res;
     }
+private:
+    const vector<string> index {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
 };
 
 template<class T>
