@@ -19,7 +19,7 @@ public class FindKthElement {
 
     public int findKthLargest(int[] nums, int k) {
         int j = nums.length - k;
-        //寻找第K大的数，反过来就是查找数组中length-k+1小的数
+        //寻找第K大的数，反过来就是查找数组中length-k小的数
         return quickSort(nums, 0, nums.length - 1, j);
     }
 
