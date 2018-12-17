@@ -36,6 +36,31 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
-        
+      if (!head) {
+	return nullptr;
+      }
+
+      if (head&&!head->next) {
+	return new TreeNode(head->val);
+      }
+
+      ListNode* slow = head;
+      ListNode* fast = head;
+      ListNode* pre = nullptr;
+      while (fast&&fast -> next) {
+	pre = slow;
+	slow = slow -> next;
+	fast = fast -> next -> next;
+      }
+
+      TreeNode* root = new TreeNode(slow -> val);
+      if (pre) {
+	pre -> next = nullptr;
+      }
+
+      root -> left = sortedListToBST(head);
+      root -> right = sortedListToBST(slow -> next);
+
+      return root;
     }
 };
