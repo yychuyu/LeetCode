@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 output/
+out/
 */.idea/
 *.pyc
 *.pyo
