@@ -27,3 +27,14 @@ public:
         return rst;
     }
 };
+
+/*
+还有一种(最简单的)做法：因为众数出现的次数过半了，所以排序后，最中间的值必定是众数。
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        return nums[nums.size()/2];
+    }
+};
+*/
