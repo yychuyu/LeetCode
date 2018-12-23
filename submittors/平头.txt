@@ -4,3 +4,8 @@ Date:   Mon Dec 10 11:05:51 2018 +0800
 
     add two numbers II by pingtou.
 
+commit f1db8d5c10d7c574b83945d1442ec253324a289a
+Author: 2551247912@qq.com <2551247912@qq.com>
+Date:   Thu Dec 20 00:11:28 2018 +0800
+
+    add two sum function by pingtou.
