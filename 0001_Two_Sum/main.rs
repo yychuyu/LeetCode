@@ -4,18 +4,15 @@ struct Solution {}
 
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        let mut res = vec![];
         let mut map = HashMap::new();
         for (i, v) in nums.iter().enumerate() {
             let t = target - v;
             if let Some(idx) = map.get(&t) {
-                res.push(*idx as i32);
-                res.push(i as i32);
-                break;
+                return vec![*idx as i32, i as i32];
             }
             map.insert(v, i);
         }
-        res
+        vec![]
     }
 }
 
