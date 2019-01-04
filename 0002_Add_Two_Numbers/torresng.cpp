@@ -35,50 +35,22 @@ struct ListNode {
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        if(l1 == nullptr || (l1->val == 0 && l1->next == nullptr)) return l2;
-        if(l2 == nullptr || (l2->val == 0 && l2->next == nullptr)) return l1;
-        int carry = 0;
-        ListNode *pre = nullptr, *head = nullptr;
-        while(l1 && l2) {
-            int add = l1->val + l2->val + carry;
-            int val = add;
-            if(add >= 10) {
-                val = add - 10;
+        ListNode tmp(0);
+        ListNode *cur = &tmp;
+        unsigned carry = 0;
+        while(l1 || l2 || carry) {
+            int sum = (l1?l1->val:0) + (l2?l2->val:0) + carry;
+            cur->next = new ListNode(sum % 10);
+            cur = cur->next;
+            if(sum >= 10) {
                 carry = 1;
             } else {
                 carry = 0;
             }
-            l1 = l1->next;
-            l2 = l2->next;
-            ListNode *newNode = new ListNode(val);
-            if(pre == nullptr) {
-                pre = head = newNode;
-            } else {
-                pre->next = newNode;
-                pre = newNode;
-            }
+            if(l1) l1 = l1->next;
+            if(l2) l2 = l2->next;
         }
-        ListNode *p = (l1) ? l1 : l2;
-        while(p) {
-            int add  = p->val + carry;
-            int val = add;
-            if(add >= 10) {
-                val = add - 10;
-                carry = 1;
-            } else {
-                carry = 0;
-            }
-            ListNode *newNode = new ListNode(val);
-            pre->next = newNode;
-            pre = newNode;
-            p = p->next;
-        }
-        if(carry) {
-            ListNode *newNode = new ListNode(carry);
-            pre->next = newNode;
-        }
-
-        return head;
+        return tmp.next;
     }
 };
 
