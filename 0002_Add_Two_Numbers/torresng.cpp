@@ -38,8 +38,9 @@ public:
         ListNode tmp(0);
         ListNode *cur = &tmp;
         unsigned carry = 0;
+        unsigned sum = 0;
         while(l1 || l2 || carry) {
-            int sum = (l1?l1->val:0) + (l2?l2->val:0) + carry;
+            sum = (l1?l1->val:0) + (l2?l2->val:0) + carry;
             cur->next = new ListNode(sum % 10);
             cur = cur->next;
             if(sum >= 10) {
