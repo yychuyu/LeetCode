@@ -19,3 +19,4 @@ out/
 .DS_Store
 */.DS_Store
 *.out
+**/torresng_rust/debug
