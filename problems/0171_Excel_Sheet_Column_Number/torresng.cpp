@@ -39,3 +39,31 @@ Example 3:
 #include <iostream>
 
 using namespace std;
+
+class Solution {
+public:
+    int titleToNumber(string s) {
+        int res = 0;
+        int i = 1;
+        for(auto rit = s.rbegin(); rit != s.rend(); ++rit) {
+            res += (i * (*rit - 'A' + 1));
+            i *= 26;
+        }
+        return res;
+    }
+};
+
+int main(void) {
+    Solution soluation;
+    string s = "A";
+    cout << "A -> " << soluation.titleToNumber(s) << endl;
+    s = "Z";
+    cout << "Z -> " << soluation.titleToNumber(s) << endl;
+    s = "AB";
+    cout << "AB -> " << soluation.titleToNumber(s) << endl;
+    s = "ZY";
+    cout << "ZY -> " << soluation.titleToNumber(s) << endl;
+
+
+    return 0;
+}
