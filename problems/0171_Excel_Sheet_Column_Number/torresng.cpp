@@ -44,10 +44,8 @@ class Solution {
 public:
     int titleToNumber(string s) {
         int res = 0;
-        int i = 1;
-        for(auto rit = s.rbegin(); rit != s.rend(); ++rit) {
-            res += (i * (*rit - 'A' + 1));
-            i *= 26;
+        for(auto it = s.begin(); it != s.end(); ++it) {
+            res = res * 26 + (*it - 'A' + 1);
         }
         return res;
     }
