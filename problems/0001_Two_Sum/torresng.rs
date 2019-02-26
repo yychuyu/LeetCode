@@ -5,7 +5,7 @@ struct Solution {}
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut map = HashMap::new();
-        for (i, v) in nums.iter().enumerate() {
+        for (i, &v) in nums.iter().enumerate() {
             let t = target - v;
             if let Some(idx) = map.get(&t) {
                 return vec![*idx as i32, i as i32];
