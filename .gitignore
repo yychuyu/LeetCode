@@ -1,6 +1,7 @@
 .idea/
 .vscode/
 output/
+out/
 */.idea/
 *.pyc
 *.pyo
@@ -18,3 +19,4 @@ output/
 .DS_Store
 */.DS_Store
 *.out
+**/torresng_rust/debug
