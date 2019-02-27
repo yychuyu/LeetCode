@@ -3,7 +3,7 @@ package stack;
 import java.util.Stack;
 
 public class MinStack {
-    private Stack<Integer> stack;
+   private Stack<Integer> stack;
     private Stack<Integer> minStack;
 
     /**
@@ -15,11 +15,9 @@ public class MinStack {
     }
 
     public void push(int x) {
-        if ((!stack.empty() && x > stack.peek()) && (!minStack.empty() && minStack.peek() >= x)) {
+        stack.add(x);
+        if (minStack.empty()||minStack.peek() >= x) {
             minStack.add(x);
-            stack.add(x);
-        }else {
-            stack.add(x);
         }
     }
 
