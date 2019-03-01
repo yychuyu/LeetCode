@@ -35,9 +35,8 @@ For example, given the above Employee table, the query should return 200 as the 
 
 ***************************************************************/
 
-SELECT IFNULL(
-(SELECT Salary FROM Employee
-GROUP BY Salary
-ORDER BY Salary DESC
-LIMIT 1,1)
-, NULL) SecondHighestSalary;
+SELECT(
+    SELECT DISTINCT Salary FROM Employee 
+    ORDER BY Salary DESC 
+    LIMIT 1 OFFSET 1
+) AS SecondHighestSalary;
