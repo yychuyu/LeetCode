@@ -11,9 +11,6 @@ public class DisappearedNumbersLuoQuan {
 
     public static List<Integer> findDisappearedNumbers(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
-            //如果位置上的索引与数值一致则直接跳过
-            if (nums[i] == i + 1)
-                continue;
             int index = Math.abs(nums[i]) - 1;
             nums[index] = Math.abs(nums[index]) * -1;
         }
