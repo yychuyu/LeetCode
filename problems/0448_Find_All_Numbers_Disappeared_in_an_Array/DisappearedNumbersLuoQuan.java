@@ -24,13 +24,6 @@ public class DisappearedNumbersLuoQuan {
             if (nums[i] > 0)
                 result.add(i + 1);
         }
-
         return result;
     }
-
-    public static void main(String[] args) {
-        int[] array = new int[]{4,3,2,7,8,2,3,1};
-        System.out.println(findDisappearedNumbers(array));
-    }
-
 }
