@@ -36,6 +36,14 @@ Given the Employee table, write a SQL query that finds out employees who earn mo
 
 ***************************************************************/
 
-SELECT a.Name Employee FROM Employee AS a JOIN Employee AS b 
-ON a.ManagerId = b.Id WHERE a.Salary > b.Salary;
-
+SELECT a.Name AS Employee FROM
+(
+    SELECT * FROM Employee
+) a
+JOIN
+(
+    SELECT * FROM Employee
+    GROUP BY id
+) b
+ON a.ManagerId = b.Id
+WHERE a.Salary > b.Salary;
