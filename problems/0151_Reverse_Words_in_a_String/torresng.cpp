@@ -64,7 +64,7 @@ public:
                 iter2++;
             }
         }
-        if(iter1 != iter2) reverse(iter1, iter2);
+        reverse(iter1, iter2);
 
         return s;
     }
