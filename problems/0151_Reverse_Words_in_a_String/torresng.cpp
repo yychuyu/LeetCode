@@ -41,29 +41,31 @@ using namespace std;
 class Solution {
 public:
     string reverseWords(string s) {
-        string::iterator iter1 = s.begin(), iter2 = s.begin();
-        while(iter1 != s.end()) {
-            if(isspace(*iter1) && (iter1 == s.begin() || isspace(*(iter1 - 1)))) {
-                iter1++;
+        unsigned i = 0, j = 0;
+        while(i != s.size()) {
+            if(isspace(s[i]) && ((i == 0) || (isspace(s[i-1])))) {
+                i++;
             } else {
-                *iter2 = *iter1;
-                iter1++;
+                s[j++] = s[i++];
+            }
+        }
+
+        if(j > 0 && isspace(s[j-1])) j--;  // remove tail space
+        s.resize(j);
+        reverse(s.begin(), s.end());
+    
+        auto iter1 = s.begin(), iter2 = s.begin();
+        while(iter2 != s.end()) {
+            if(isspace(*iter2)) {
+                reverse(iter1, iter2);
+                iter2++;
+                iter1 = iter2;
+            } else {
                 iter2++;
             }
         }
-        
-        if((iter2 != s.begin()) && isspace(*(s.end() - 1))) iter2--;
-        s.resize(iter2 - s.begin());
-        if(s.empty()) return s;
+        if(iter1 != iter2) reverse(iter1, iter2);
 
-        reverse(s.begin(), s.end());
-        for(iter1 = s.begin(), iter2 = s.begin() + 1; iter2 != s.end(); iter2++) {
-           if(isspace(*iter2)) {
-                reverse(iter1, iter2);
-                iter1 = iter2 + 1;
-           }
-        }
-        reverse(iter1, iter2);
         return s;
     }
 };
@@ -76,6 +78,7 @@ int main(void) {
     assert(!s.reverseWords("").compare(""));
     assert(!s.reverseWords("  ").compare(""));
     assert(!s.reverseWords("a").compare("a"));
+    assert(!s.reverseWords("1 ").compare("1"));
 
     return 0;
 }
