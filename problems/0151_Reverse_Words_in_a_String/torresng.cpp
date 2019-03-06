@@ -41,60 +41,32 @@ using namespace std;
 class Solution {
 public:
     string reverseWords(string s) {
-        s = trim(s);
-        if(s == "") return s;
-        reverse(s.begin(), s.end());
-        string res = "";
+        if(s.empty()) return s;
+    
+        string::iterator iter1 = s.begin(), iter2 = s.begin();
+        while(iter1 != s.end()) {
+            if(isspace(*iter1) && (iter1 == s.begin() || isspace(*(iter1 - 1)))) {
+                iter1++;
+            } else {
+                *iter2 = *iter1;
+                iter1++;
+                iter2++;
+            }
+        }
         
-        std::string::iterator b = s.begin(), e = s.begin() + 1;
-        while(e != s.end()) {
-            if(*e == ' ') {
-                string temp = string(b, e);
-                reverse(temp.begin(), temp.end());
-                if(res.empty()) {
-                    res = res + temp;
-                } else {
-                    res = res + " " + temp;
-                }
-                b = e + 1;
-                while(*b == ' ' && *b != '\0') {
-                    b++;
-                }
-                if(*b == '\0') break;
-                e = b;
-            } else {
-                e++;
-            }
+        if((iter2 != s.begin()) && isspace(*(s.end() - 1))) iter2--;
+        s.resize(iter2 - s.begin());
+        if(s.empty()) return s;
+
+        reverse(s.begin(), s.end());
+        for(iter1 = s.begin(), iter2 = s.begin() + 1; iter2 != s.end(); iter2++) {
+           if(isspace(*iter2)) {
+                reverse(iter1, iter2);
+                iter1 = iter2 + 1;
+           }
         }
-
-        if(b != e) {
-            string temp = string(b, e);
-            reverse(temp.begin(), temp.end());
-            if(b != s.begin()) {
-                res = res + " " + temp;
-            } else {
-                res = temp;
-            }
-        }
-
-        return res;
-    }
-    std::string & trim(std::string & str)
-    {
-        return ltrim(rtrim(str));
-    }
-    std::string & ltrim(std::string & str)
-    {
-        auto it2 =  std::find_if( str.begin() , str.end() , [](char ch){ return !std::isspace<char>(ch , std::locale::classic() ) ; } );
-        str.erase( str.begin() , it2);
-        return str;   
-    }
-
-    std::string & rtrim(std::string & str)
-    {
-        auto it1 =  std::find_if( str.rbegin() , str.rend() , [](char ch){ return !std::isspace<char>(ch , std::locale::classic() ) ; } );
-        str.erase( it1.base() , str.end() );
-        return str;   
+        reverse(iter1, iter2);
+        return s;
     }
 };
 
