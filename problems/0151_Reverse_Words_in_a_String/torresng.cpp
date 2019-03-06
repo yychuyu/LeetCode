@@ -41,8 +41,6 @@ using namespace std;
 class Solution {
 public:
     string reverseWords(string s) {
-        if(s.empty()) return s;
-    
         string::iterator iter1 = s.begin(), iter2 = s.begin();
         while(iter1 != s.end()) {
             if(isspace(*iter1) && (iter1 == s.begin() || isspace(*(iter1 - 1)))) {
