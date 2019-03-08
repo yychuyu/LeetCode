@@ -30,17 +30,16 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-		if(head == nullptr) return head;
-		ListNode *cur = head, *pre = nullptr;
+		// remove element of head which value equals to val
+		while(head && head->val == val) {
+			head = head->next;
+		}
+
+		ListNode *pre = head, *cur = head->next;
 		while(cur) {
 			if(cur->val == val) {
-				if(pre == nullptr) {
-					head = head->next;
-					cur = head;
-				} else {
-					cur = cur->next;
-					pre->next = cur;
-				}
+				cur = cur->next;
+				pre->next = cur;
 			} else {
 				pre = cur;
 				cur = cur->next;
