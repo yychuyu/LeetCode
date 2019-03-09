@@ -1,7 +1,0 @@
-[package]
-name = "torresng_rust"
-version = "0.1.0"
-authors = ["Torres Ng <torresng2684cte@gmail.com>"]
-edition = "2018"
-
-[dependencies]
