@@ -30,7 +30,7 @@ Example 3:
 
 #include <iostream>
 #include <string>
-#include <set>
+#include <algorithm>
 #include <cassert>
 
 using namespace std;
@@ -39,20 +39,15 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int res = 0;
-        int count = 0;
-        std::set<char> set;
-        auto iter1 = s.begin(), iter2 = s.begin();
-        while(iter2 != s.end()) {
-            if(set.find(*iter2) == set.end()) {
-                set.insert(*iter2);
-                count++;
-                if(count > res) res = count;
-                iter2++;
-            } else {
-                set.erase(*iter1);
-                count--;
-                iter1++;
+        int start = -1;
+        int hash[256];
+        std::fill_n(hash, 256, -1);
+        for(int i = 0; i < s.size(); i++) {
+            if(hash[s[i]] > start) {
+                start = hash[s[i]];
             }
+            hash[s[i]] = i;
+            res = max(res, i - start);
         }
         return res;
     }
