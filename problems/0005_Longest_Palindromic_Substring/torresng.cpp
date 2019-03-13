@@ -30,9 +30,13 @@ class Solution {
 public:
     string longestPalindrome(string s) {
         int start = 0, maxLength = 0;
-        for(int i = 0; i < s.size(); i++) {
-            searchPalindrome(s, i, i, start, maxLength);
-            searchPalindrome(s, i, i+1, start, maxLength);
+        for(int i = 0; i < s.size();) {
+            int left = i, right = i;
+            while((right < s.size()) && (s[left] == s[right+1])) {
+                ++right;
+            }
+            i = right + 1;
+            searchPalindrome(s, left, right, start, maxLength);
         }
         return s.substr(start, maxLength);
     }
