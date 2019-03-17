@@ -29,28 +29,24 @@ using namespace std;
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int start = 0, maxLength = 0;
-        for(int i = 0; i < s.size();) {
-            int left = i, right = i;
-            while((right < s.size()) && (s[left] == s[right+1])) {
-                ++right;
+        if(s.empty()) return "";
+        int left = 0, right = 0, maxLength = 0;
+        bool dp[s.size()][s.size()];
+        memset(dp, false, s.size()*s.size()*sizeof(bool));
+        for(int j = 0; j < s.size(); ++j) {
+            for(int i = 0; i < j; ++i) {
+                dp[i][j] = (s[i] == s[j]) && ((j - i) < 2 || dp[i+1][j-1]);;
+                if(dp[i][j] && ((j - i + 1) > maxLength)) {
+                    left = i;
+                    right = j;
+                    maxLength = j - i + 1;
+                }
             }
-            i = right + 1;
-            searchPalindrome(s, left, right, start, maxLength);
+            dp[j][j] = true;
         }
-        return s.substr(start, maxLength);
+        return s.substr(left, right-left+1);
     }
 
-    void searchPalindrome(const string &s, int left, int right, int &start, int &maxLength) {
-        while(left >= 0 && right < s.size() && (s[left] == s[right])) {
-            left--;
-            right++;
-        }
-        if((right - left - 1) > maxLength) {
-            maxLength = right - left - 1;
-            start = left + 1;
-        }
-    }
 };
 
 void test_case_1() {
