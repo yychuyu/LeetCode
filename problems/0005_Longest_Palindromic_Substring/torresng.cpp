@@ -33,8 +33,9 @@ public:
         int left = 0, right = 0, maxLength = 0;
         bool dp[s.size()][s.size()];
         memset(dp, false, s.size()*s.size()*sizeof(bool));
-        for(int j = 0; j < s.size(); ++j) {
-            for(int i = 0; i < j; ++i) {
+        int i, j;
+        for(j = 0; j < s.size(); ++j) {
+            for(i = 0; i < j; ++i) {
                 dp[i][j] = (s[i] == s[j]) && ((j - i) < 2 || dp[i+1][j-1]);;
                 if(dp[i][j] && ((j - i + 1) > maxLength)) {
                     left = i;
