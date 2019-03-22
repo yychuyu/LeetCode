@@ -1,0 +1,58 @@
+	Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. 
+	Return the sum of the three integers.You may assume that each input would have exactly one solution.
+
+	Example:
+		Given array nums = [-1, 2, 1, -4], and target = 1.
+		The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+
+	我的理解：给出一个数组以及一个定值target，在数组中找三个与target差值最小的元素，返回三个元素的和。
+	百度理解：给出一个数组以及一个定值target，在数组中找三个元素，三个元素的和与target差值最小。
+
+	我的解答：
+	
+		...
+
+	参考：https://blog.csdn.net/Jerseywwwwei/article/details/80048085
+
+	思路：
+
+		将其重新排列，利用 left,right指针在中数为i,
+		(起始left=0;? ?right=nums.length -1;? ?1<= i <= nums.length -1;)
+		中进行移动操作
+?		sum = nums[left] + nums[right] + nums[i];
+		如果sum - target大于0，right--； 反之则left++；
+	
+		具体的java实现如下所示：
+	
+	
+	
+	import java.util.Arrays;
+	public class LeetCode16 { 
+		public static void main(String[] args) {
+			
+			int [] nums = {-1,2,1,-4};
+			System.out.println(threeSumClost(nums,1));
+		}
+		
+		public  static int threeSumClost(int[] nums,int target){
+			 Arrays.sort(nums);
+			int clost = Integer.MAX_VALUE,sub = 0,abssub = 0,sum = 0; // 定义最接近的数,目前差值
+			for(int i = 1 ; i < nums.length - 1 ; i++){
+				int left = 0, right = nums.length - 1;
+				while(left < i && right > i){
+			
+				 sub = nums[left] + nums[right] + nums[i] - target;
+				 abssub = Math.abs(sub);
+			
+				 if(clost > abssub){  
+					 clost = abssub;
+					 sum = nums[left] + nums[right] + nums[i] ;
+				 }
+				 if(sub > 0){ right--;}
+				 else if(sub < 0 ){ left++;}
+				 else{ sum = nums[left] + nums[right] + nums[i] ; break; }
+				}
+			}
+			return sum;
+		}
+	}
