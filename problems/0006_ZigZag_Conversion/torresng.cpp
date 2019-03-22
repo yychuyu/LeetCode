@@ -47,7 +47,7 @@ class Solution {
 public:
     string convert(string s, int numRows) {
         if(numRows == 1) return s;
-        map<int, string> mp;
+        string mp[numRows];
         int period = numRows * 2 - 2;
         for(int i = 0; i < s.size(); i++) {
             int pos = i % period;
