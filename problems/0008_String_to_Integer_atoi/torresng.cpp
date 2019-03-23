@@ -72,41 +72,45 @@ using namespace std;
 class Solution {
 public:
   int myAtoi(string str) {
-    auto iter = str.begin();
-    while (iter != str.end() && *iter == ' ') {
-      iter += 1;
-    }
-    if (iter == str.end())
+    if (str.empty()) {
       return 0;
-    //  +/- sign
-    bool sign = false;
-    if (*iter == '-') {
-      sign = true;
-      iter += 1;
-    } else if (*iter == '+') {
-      sign = false;
-      iter += 1;
     }
-    if (iter == str.end())
-      return 0;
 
-    long long res = 0;
-    while (iter != str.end()) {
-      if (isdigit(*iter)) {
-        res = res * 10 + (*iter - '0');
-        if (res >= (1L << 31)) {
-          res = sign ? (1L << 31) : (1L << 31) - 1;
-          return sign ? -res : res;
-        }
-        iter += 1;
-      } else {
+    int sign = 1;
+    long base = 0, i = 0;
+
+    // skip all the preceding whitespaces
+    while (i < str.size() && str[i] == ' ') {
+      ++i;
+    }
+
+    // check if first char is sign
+    // if it is, skip one char
+    if (str[i] == '-') {
+      sign = -1;
+      ++i;
+    } else if (str[i] == '+') {
+      ++i;
+    }
+
+    // convert number one by one
+    // if encounter letter, break
+    while (i < str.size() && isdigit(str[i])) {
+      base = 10 * base + (str[i] - '0');
+      ++i;
+      // small optimization to stop processing
+      // if hitting the limit
+      if (base > INT_MAX) {
         break;
       }
     }
-    if (sign) {
-      res = -res;
+
+    // check if base has exceeded maximum
+    if (base > INT_MAX) {
+      return (sign == 1) ? INT_MAX : INT_MIN;
     }
-    return res;
+
+    return base * sign;
   }
 };
 
