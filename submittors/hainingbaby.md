@@ -1,7 +1,2 @@
-微信ID: hainingbaby
-第一周：
-----------------------------------------
-Commit ID：
-5a9568ddd1440ddd8c9a66b5d8b2f4e50787f440
-2d235eb28bbe62b8620019b9dca543d64d0f5d91
-
+commit id:
+096e83b9de5684a713341c74e115607f627f3057

@@ -1,0 +1,75 @@
+﻿	Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? 
+	Find all unique triplets in the array which gives the sum of zero.
+
+	Note:
+		The solution set must not contain duplicate triplets.
+	Example:
+
+		Given array nums = [-1, 0, 1, 2, -1, -4],
+
+		A solution set is:
+			[
+  			    [-1, 0, 1],
+  			    [-1, -1, 2]
+			]
+
+	题意理解：给出一个数组，在这个数组中找出三个元素使其和为0，结果不能重复，比如 [-1, 0, 1]与[0,-1,1]
+
+	我的解答：
+	
+		...
+
+	参考：https://blog.csdn.net/fyy607/article/details/53939556
+
+
+
+		首先是求解：因为要求3个数，如果我们固定其中1个数，再用求“和为某值的2个数的组合”的解法，就能把剩下的2个数求出来。因
+	此，先对数组进行非递减排序，这样整个数组的数就由小到大排列。i 的取值由 0 至 n-1，对每一个i，我们求当num[i]是解当中的其
+	中一个数时，其他的2个数。设有指针p指向数组头(实际只要p从i+1开始)，q指向数组尾，sum = num[i] + num[p]+ num[q]，因为num[i]
+	是一定在解中的，所以如果sum < 0，因为num[q]已经不能增大，所以说明num[p]太小了，这时p需要向后移动，找一个更大的数。
+	同理，sum > 0，说明num[q]太大了，需要q向前移动。当sum == 0时，说明找到了一个解。但找到了一个解，并不说明解中有num[i]的
+	所有解都找到了，因此p或q还需要继续移动寻找其他的解，直到p == q为止。
+		上面是求解的过程，那么去重怎么做？去重就在于和之前的解进行比较，但我们不需要比较所有的解，这里有一个技巧。
+	1. 如果num[i] = num[i - 1]，说明刚才i-1时求的解在这次肯定也会求出一样的，所以直接跳过不求；
+	2. 其实指针p不需要从数组头开始，因为如果num[i]所在的解中如果有i之前的数，设其位置为j，那么我们求num[j]时，肯定把num[i]
+    	也找出来放到和num[j]一起的解里了，所以指针p其实应该从i+1开始，即初始时p = i + 1, q = num.size() - 1；
+	3. 当sum == 0，我们保存了当前解以后，需要num[i]在解中的其他的2个数组合，这个时候，肯定是p往后或者q往前，如果++p，发
+    	现其实num[p] == num[p-1]，说明这个解肯定和刚才重复了，再继续++p。同理，如果--q后发现num[q] == num[q+1]，继续--q。
+    	这个去重操作主要针对这种有多个同值的数组，如：-3, 1,1,1, 2,2,3,4。
+
+	具体的java实现如下所示：
+	public class Solution {
+		public List<List<Integer>> threeSum(int[] nums) {
+			List<List<Integer>> list = new ArrayList<List<Integer>>();
+			int n = nums.length;
+			Arrays.sort(nums);
+			for(int i=0;i<n;i++){
+				if(i!=0 && nums[i]==nums[i-1]) continue;
+				int sum = 0;
+				int p = i+1,q = n-1;
+				while(p<q){
+					sum = nums[i]+nums[p]+nums[q];
+					if(sum==0){
+						List<Integer> item = new ArrayList<Integer>();
+						item.add(nums[i]);
+						item.add(nums[p]);
+						item.add(nums[q]);
+						list.add(item);
+						while(++p<q && nums[p-1]==nums[p]){
+							
+						}
+						while(--q>p && nums[q+1]==nums[q]){
+							
+						}
+					}
+					else if(sum>0){
+						q--;
+					}
+					else{
+						p++;
+					}
+				}
+			}
+			return list;
+		}
+	}
