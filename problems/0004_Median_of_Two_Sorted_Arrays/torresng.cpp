@@ -36,33 +36,37 @@ using namespace std;
 class Solution {
 public:
   double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
-    vector<int> sum;
-    int i = 0, j = 0;
-    while (i < nums1.size() && j < nums2.size()) {
-      if (nums1[i] <= nums2[j]) {
-        sum.push_back(nums1[i]);
-        i += 1;
-      } else {
-        sum.push_back(nums2[j]);
-        j += 1;
-      }
+    int n = nums1.size() + nums2.size();
+    int k = (n + 1) / 2;
+    if (n % 2 == 0) {
+      return (findKSortedArrays(nums1, nums2, k) +
+              findKSortedArrays(nums1, nums2, k + 1)) /
+             2;
     }
-    while (i < nums1.size()) {
-      sum.push_back(nums1[i]);
-      i += 1;
+    return findKSortedArrays(nums1, nums2, k);
+  }
+
+  double findKSortedArrays(vector<int> &nums1, vector<int> &nums2, int k) {
+    if (nums1.size() > nums2.size()) {
+      return findKSortedArrays(nums2, nums1, k);
+    } else if (nums1.size() == 0) {
+      return nums2[k - 1];
+    } else if (k == 1) {
+      return min(nums1[0], nums2[0]);
     }
-    while (j < nums2.size()) {
-      sum.push_back(nums2[j]);
-      j += 1;
-    }
-    float res = 0;
-    if (sum.size() % 2 == 0) {
-      res = sum[sum.size() / 2] + sum[sum.size() / 2 - 1];
-      res /= 2;
+
+    int tmp = k / 2;
+    int pa = (tmp < nums1.size()) ? tmp : nums1.size();
+    int pb = k - pa;
+    if (nums1[pa - 1] < nums2[pb - 1]) {
+      vector<int> a(nums1.begin() + pa, nums1.end());
+      return findKSortedArrays(a, nums2, k - pa);
+    } else if (nums2[pb - 1] < nums1[pa - 1]) {
+      vector<int> a(nums2.begin() + pb, nums2.end());
+      return findKSortedArrays(nums1, a, k - pb);
     } else {
-      res = sum[sum.size() / 2];
+      return nums1[pa - 1];
     }
-    return res;
   }
 };
 
