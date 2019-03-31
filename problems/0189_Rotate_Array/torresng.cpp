@@ -34,6 +34,7 @@ ways to solve this problem.
 
 ***************************************************************/
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -42,10 +43,11 @@ using namespace std;
 class Solution {
 public:
   void rotate(vector<int> &nums, int k) {
-    vector<int> tmp = nums;
-    for (int i = 0; i < nums.size(); i++) {
-      nums[(i + k) % nums.size()] = tmp[i];
-    }
+    if(nums.size() <= 1) return;
+    k %= nums.size();
+    reverse(nums.begin(), nums.end());
+    reverse(nums.begin(), nums.begin() + k);
+    reverse(nums.begin() + k, nums.end());
   }
 };
 
@@ -71,9 +73,33 @@ void test_case_2() {
   }
 }
 
+void test_case_3() {
+  Solution s = Solution();
+  vector<int> nums = {1,2};
+  int k = 3;
+  s.rotate(nums, k);
+  vector<int> ans = {2,1};
+  for (int i = 0; i < nums.size(); i++) {
+    assert(nums[i] == ans[i]);
+  }
+}
+
+void test_case_4() {
+  Solution s = Solution();
+  vector<int> nums = {-1};
+  int k = 2;
+  s.rotate(nums, k);
+  vector<int> ans = {-1};
+  for (int i = 0; i < nums.size(); i++) {
+    assert(nums[i] == ans[i]);
+  }
+}
+
 int main(void) {
   test_case_1();
   test_case_2();
+  test_case_3();
+  test_case_4();
 
   return 0;
 }
