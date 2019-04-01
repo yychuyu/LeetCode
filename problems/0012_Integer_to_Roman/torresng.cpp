@@ -72,48 +72,107 @@ class Solution {
 public:
   string intToRoman(int num) {
     string res;
-    while (num) {
-      if (num - 1000 >= 0) {
-        res += "M";
-        num -= 1000;
-      } else if (num - 900 >= 0) {
-        res += "CM";
-        num -= 900;
-      } else if (num - 500 >= 0) {
-        res += "D";
-        num -= 500;
-      } else if (num - 400 >= 0) {
-        res += "CD";
-        num -= 400;
-      } else if (num - 100 >= 0) {
-        res += "C";
-        num -= 100;
-      } else if (num - 90 >= 0) {
-        res += "XC";
-        num -= 90;
-      } else if (num - 50 >= 0) {
-        res += "L";
-        num -= 50;
-      } else if (num - 40 >= 0) {
-        res += "XL";
-        num -= 40;
-      } else if (num - 10 >= 0) {
-        res += "X";
-        num -= 10;
-      } else if (num - 9 >= 0) {
-        res += "IX";
-        num -= 9;
-      } else if (num - 5 >= 0) {
-        res += "V";
-        num -= 5;
-      } else if (num - 4 >= 0) {
-        res += "IV";
-        num -= 4;
-      } else if (num - 1 >= 0) {
-        res += "I";
-        num -= 1;
-      }
+    int n_1000 = num / 1000;
+    int n_m_1000 = num % 1000;
+    for (int i = 0; i < n_1000; i++) {
+      res += 'M';
     }
+
+    int n_100 = n_m_1000 / 100;
+    int n_m_100 = n_m_1000 % 100;
+    switch (n_100) {
+    case 9:
+      res += "CM";
+      break;
+    case 8:
+      res += "DCCC";
+      break;
+    case 7:
+      res += "DCC";
+      break;
+    case 6:
+      res += "DC";
+      break;
+    case 5:
+      res += "D";
+      break;
+    case 4:
+      res += "CD";
+      break;
+    case 3:
+      res += "CCC";
+      break;
+    case 2:
+      res += "CC";
+      break;
+    case 1:
+      res += "C";
+      break;
+    }
+
+    int n_10 = n_m_100 / 10;
+    int n_m_10 = n_m_100 % 10;
+    switch (n_10) {
+    case 9:
+      res += "XC";
+      break;
+    case 8:
+      res += "LXXX";
+      break;
+    case 7:
+      res += "LXX";
+      break;
+    case 6:
+      res += "LX";
+      break;
+    case 5:
+      res += "L";
+      break;
+    case 4:
+      res += "XL";
+      break;
+    case 3:
+      res += "XXX";
+      break;
+    case 2:
+      res += "XX";
+      break;
+    case 1:
+      res += "X";
+      break;
+    };
+
+    int n_1 = n_m_10;
+    switch (n_1) {
+    case 9:
+      res += "IX";
+      break;
+    case 8:
+      res += "VIII";
+      break;
+    case 7:
+      res += "VII";
+      break;
+    case 6:
+      res += "VI";
+      break;
+    case 5:
+      res += "V";
+      break;
+    case 4:
+      res += "IV";
+      break;
+    case 3:
+      res += "III";
+      break;
+    case 2:
+      res += "II";
+      break;
+    case 1:
+      res += "I";
+      break;
+    };
+
     return res;
   }
 };
