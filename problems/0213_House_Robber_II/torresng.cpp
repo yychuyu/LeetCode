@@ -39,26 +39,24 @@ using namespace std;
 class Solution {
 public:
   int rob(vector<int> &nums) {
-    if(nums.size() == 0) return 0;
-    const int n = nums.size();
-    int dp[2][n];
-    dp[0][0] = nums[0];
     if (nums.size() == 1)
-      return dp[0][0];
-    dp[0][1] = max(nums[0], nums[1]);
-    if (nums.size() == 2)
-      return dp[0][1];
-    dp[1][1] = nums[1];
-    dp[1][0] = 0;
+      return nums[0];
+    return max(robRange(nums, 0, nums.size() - 1),
+               robRange(nums, 1, nums.size()));
+  }
 
-    for (int i = 2; i < nums.size(); i++) {
-      if (i == nums.size() - 1) {
-        return max(dp[1][i - 2] + nums[i], dp[0][i - 1]);
+  int robRange(vector<int> &nums, int s, int e) {
+    int s1 = 0, s2 = 0, res = 0;
+    for (int i = s; i < e; i++) {
+      if (s1 + nums[i] > s2) {
+        res = s1 + nums[i];
+      } else {
+        res = s2;
       }
-      dp[0][i] = max(dp[0][i - 2] + nums[i], dp[0][i - 1]);
-      dp[1][i] = max(dp[1][i - 2] + nums[i], dp[1][i - 1]);
+      s1 = s2;
+      s2 = res;
     }
-    return max(dp[0][nums.size() - 1], dp[1][nums.size() - 1]);
+    return res;
   }
 };
 
