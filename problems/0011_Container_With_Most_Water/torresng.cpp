@@ -34,13 +34,17 @@ using namespace std;
 class Solution {
 public:
   int maxArea(vector<int> &height) {
-    int res = 0;
-    for (int i = 0; i < height.size() - 1; i++) {
-      for (int j = i + 1; j < height.size(); j++) {
-        int c = (j - i) * min(height[i], height[j]);
-        if (c > res) {
-          res = c;
-        }
+    int i = 0, j = height.size() - 1;
+    int res = (j - i) * min(height[i], height[j]);
+    while (i < j) {
+      if (height[i] > height[j]) {
+        j -= 1;
+      } else {
+        i += 1;
+      }
+      int c = (j - i) * min(height[i], height[j]);
+      if (c > res) {
+        res = c;
       }
     }
     return res;
