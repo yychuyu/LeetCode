@@ -37,12 +37,10 @@ using namespace std;
 class Solution {
   public:
     vector<vector<int>> threeSum(vector<int> &nums) {
-        if (nums.size() < 3)
-            return {};
-        vector<vector<int>> ret;
         sort(nums.begin(), nums.end());
+        vector<vector<int>> ret;
 
-        for (unsigned long k = 0; k < nums.size() - 1; ++k) {
+        for (unsigned long k = 0; k < nums.size(); ++k) {
             if (nums[k] > 0)
                 break;
             while (k < nums.size() && k > 0 && nums[k] == nums[k - 1])
@@ -50,16 +48,16 @@ class Solution {
             int i = k + 1, j = nums.size() - 1;
             while (i < j) {
                 int sum = nums[i] + nums[j] + nums[k];
-                if (sum < 0) {
-                    ++i;
-                } else if (sum > 0) {
-                    --j;
-                } else {
+                if (sum == 0) {
                     ret.push_back({nums[k], nums[i], nums[j]});
                     while (++i < j && nums[i] == nums[i - 1])
                         ;
                     while (i < --j && nums[j] == nums[j + 1])
                         ;
+                } else if (sum < 0) {
+                    ++i;
+                } else {
+                    --j;
                 }
             }
         }
