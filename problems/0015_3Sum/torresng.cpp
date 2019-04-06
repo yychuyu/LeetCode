@@ -42,7 +42,7 @@ class Solution {
         vector<vector<int>> ret;
         sort(nums.begin(), nums.end());
 
-        for (int k = 0; k < nums.size() - 1; ++k) {
+        for (unsigned long k = 0; k < nums.size() - 1; ++k) {
             if (nums[k] > 0)
                 break;
             while (k < nums.size() && k > 0 && nums[k] == nums[k - 1])
@@ -67,108 +67,91 @@ class Solution {
     }
 };
 
+bool compare(const vector<vector<int>> &res, const vector<vector<int>> &ans) {
+    if (res.size() != ans.size())
+        return false;
+    vector<vector<int>> n1 = res, n2 = ans;
+    for (vector<int> v : n1) {
+        sort(v.begin(), v.end());
+    }
+    for (vector<int> v : n2) {
+        sort(v.begin(), v.end());
+    }
+    for (vector<int> v : n1) {
+        auto iter = n2.begin();
+        while (iter != n2.end()) {
+            if (v.size() != iter->size()) {
+                return false;
+            }
+            if (v[0] == (*iter)[0] || v[1] == (*iter)[1] ||
+                v[2] == (*iter)[2]) {
+                n2.erase(iter);
+                break;
+            }
+        }
+    }
+    if (n2.size() != 0)
+        return false;
+
+    return true;
+}
+
 void test_case_1() {
-    cout << endl;
-    cout << "test_case_1" << endl;
     Solution s = Solution();
     vector<int> nums{-1, 0, 1, 2, -1, -4};
     vector<vector<int>> ans{{-1, 0, 1}, {-1, -1, 2}};
     vector<vector<int>> res = s.threeSum(nums);
-    for (auto vec : res) {
-        for (int val : vec) {
-            cout << val << ", ";
-        }
-        cout << endl;
-    }
+    assert(compare(res, ans) == true);
 }
 
 void test_case_2() {
-    cout << endl;
-    cout << "test_case_2" << endl;
     Solution s = Solution();
     vector<int> nums{};
     vector<vector<int>> ans{};
     vector<vector<int>> res = s.threeSum(nums);
-    for (auto vec : res) {
-        for (int val : vec) {
-            cout << val << ", ";
-        }
-        cout << endl;
-    }
+    assert(compare(res, ans) == true);
 }
 
 void test_case_3() {
-    cout << endl;
-    cout << "test_case_3" << endl;
     Solution s = Solution();
     vector<int> nums{0, 0, 0};
     vector<vector<int>> ans{{0, 0, 0}};
     vector<vector<int>> res = s.threeSum(nums);
-    for (auto vec : res) {
-        for (int val : vec) {
-            cout << val << ", ";
-        }
-        cout << endl;
-    }
+    assert(compare(res, ans) == true);
 }
 
 void test_case_4() {
-    cout << endl;
-    cout << "test_case_4" << endl;
     Solution s = Solution();
     vector<int> nums{-2, 0, 0, 2, 2};
     vector<vector<int>> ans{{-2, 0, 2}};
     vector<vector<int>> res = s.threeSum(nums);
-    for (auto vec : res) {
-        for (int val : vec) {
-            cout << val << ", ";
-        }
-        cout << endl;
-    }
+    assert(compare(res, ans) == true);
 }
 
 void test_case_5() {
-    cout << endl;
-    cout << "test_case_5" << endl;
     Solution s = Solution();
     vector<int> nums{-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6};
     vector<vector<int>> ans{{-4, -2, 6}, {-4, 0, 4},  {-4, 1, 3},
                             {-4, 2, 2},  {-2, -2, 4}, {-2, 0, 2}};
     vector<vector<int>> res = s.threeSum(nums);
-    for (auto vec : res) {
-        for (int val : vec) {
-            cout << val << ", ";
-        }
-        cout << endl;
-    }
+    assert(compare(res, ans) == true);
 }
 
 void test_case_6() {
-    cout << endl;
-    cout << "test_case_6" << endl;
     Solution s = Solution();
     vector<int> nums{0, 0};
     vector<vector<int>> ans{};
     vector<vector<int>> res = s.threeSum(nums);
-    for (auto vec : res) {
-        for (int val : vec) {
-            cout << val << ", ";
-        }
-        cout << endl;
-    }
+    assert(compare(res, ans) == true);
 }
 
 int main(void) {
-    /*
-     *test_case_1();
-     *test_case_2();
-     */
+    test_case_1();
+    test_case_2();
     test_case_3();
-    /*
-     *test_case_4();
-     *test_case_5();
-     *test_case_6();
-     */
+    test_case_4();
+    test_case_5();
+    test_case_6();
 
     return 0;
 }
