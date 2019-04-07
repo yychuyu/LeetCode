@@ -58,14 +58,13 @@ class Solution {
     int removeDuplicates(vector<int> &nums) {
         if (nums.empty())
             return 0;
-        int k = 0, len = 1;
+        int k = 0;
         for (unsigned long i = 1; i < nums.size(); ++i) {
             if (nums[i] != nums[k]) {
                 nums[++k] = nums[i];
-                ++len;
             }
         }
-        return len;
+        return k + 1;
     }
 };
 
