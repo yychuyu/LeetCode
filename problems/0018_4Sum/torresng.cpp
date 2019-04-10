@@ -33,49 +33,39 @@ using namespace std;
 
 class Solution {
   public:
-    vector<vector<int>> threeSum(vector<int> &nums, unsigned long start,
-                                 int target) {
-        vector<vector<int>> ret;
-
-        for (unsigned long k = start; k < nums.size(); ++k) {
-            while (k < nums.size() && k > start && nums[k] == nums[k - 1])
-                ++k;
-            unsigned long l = k + 1, r = nums.size() - 1;
-            while (l < r) {
-                int sum = nums[k] + nums[l] + nums[r];
-                if (sum == target) {
-                    ret.push_back({nums[k], nums[l], nums[r]});
-                    while (++l < r && nums[l] == nums[l - 1])
-                        ;
-                    while (l < --r && nums[r] == nums[r + 1])
-                        ;
-                } else if (sum < target) {
-                    ++l;
-                } else {
-                    --r;
-                }
-            }
-        }
-        return ret;
-    }
-
     vector<vector<int>> fourSum(vector<int> &nums, int target) {
-        if (nums.empty())
+        if (nums.size() < 4)
             return {};
         sort(nums.begin(), nums.end());
         vector<vector<int>> ret;
 
-        for (unsigned long i = 0; i < nums.size() - 1; ++i) {
-            vector<vector<int>> three = threeSum(nums, i + 1, target - nums[i]);
-            for (auto v : three) {
-                v.push_back(nums[i]);
-                sort(v.begin(), v.end());
-                ret.push_back(v);
+        unsigned long i = 0, j = nums.size() - 1;
+        while (i < j - 2) {
+            while (i < j - 2) {
+                unsigned long l = i + 1, r = j - 1;
+                int tar = nums[i] + nums[j];
+                while (l < r) {
+                    int sum = tar + nums[l] + nums[r];
+                    if (sum < target) {
+                        ++l;
+                    } else if (sum > target) {
+                        --r;
+                    } else {
+                        ret.push_back({nums[i], nums[l], nums[r], nums[j]});
+                        while (++l < r && nums[l] == nums[l - 1])
+                            ;
+                        while (l < --r && nums[r] == nums[r + 1])
+                            ;
+                    }
+                }
+                while (i + 2 < --j && nums[j] == nums[j + 1])
+                    ;
             }
-            while (i < nums.size() - 1 && nums[i] == nums[i + 1]) {
-                ++i;
-            }
+            j = nums.size() - 1;
+            while (++i < j - 2 && nums[i] == nums[i - 1])
+                ;
         }
+
         return ret;
     }
 };
@@ -139,8 +129,10 @@ void test_case_4() {
 }
 
 int main(void) {
-    test_case_1();
-    test_case_2();
+    /*
+     *test_case_1();
+     *test_case_2();
+     */
     test_case_3();
     test_case_4();
 
