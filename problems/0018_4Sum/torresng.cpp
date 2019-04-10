@@ -84,10 +84,10 @@ bool compare(const vector<vector<int>> &res, const vector<vector<int>> &ans) {
     if (res.size() != ans.size())
         return false;
     vector<vector<int>> n1 = res, n2 = ans;
-    for (vector<int> v : n1) {
+    for (vector<int> &v : n1) {
         sort(v.begin(), v.end());
     }
-    for (vector<int> v : n2) {
+    for (vector<int> &v : n2) {
         sort(v.begin(), v.end());
     }
     for (vector<int> v : n1) {
