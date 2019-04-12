@@ -59,6 +59,22 @@ class Solution {
         }
         return dp[m-1];
     }
+
+
+    //Permutations 
+    /*
+     *int uniquePaths(int m, int n) {
+     *    int cm = m + n - 2;
+     *    // get small one, because C(m+n-2,m-1) == C(m+n-2,n-1)
+     *    int cn = m < n ? m - 1 : n - 1;
+     *    long num = 1, denom = 1;
+     *    for (int i = 1; i <= cn; ++i) {
+     *        num *= cm--;
+     *        denom *= i;
+     *    }
+     *    return num / denom;
+     *}
+     */
 };
 
 void test_case_1() { assert(Solution().uniquePaths(3, 2) == 3); }
