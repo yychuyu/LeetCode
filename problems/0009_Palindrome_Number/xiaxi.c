@@ -1,3 +1,8 @@
+
+
+
+
+
 bool isPalindrome(int x) {
     int n,i;
     int stack[100];
