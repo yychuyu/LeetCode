@@ -22,6 +22,7 @@ Output: 2
 Explanation: 13 = 4 + 9.
 ***************************************************************/
 
+#include <complex>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -31,14 +32,18 @@ using namespace std;
 class Solution {
   public:
     int numSquares(int n) {
-        vector<int> dp(n + 1, INT_MAX);
-        dp[0] = 0;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 1; i + j * j <= n; ++j) {
-                dp[i + j * j] = min(dp[i] + 1, dp[i + j * j]);
+        while (n % 4 == 0)
+            n /= 4;
+        if (n % 8 == 7)
+            return 4;
+        for (int i = 0; i * i < n; ++i) {
+            int j = sqrt(n - i * i);
+            if (i * i + j * j == n) {
+                return !!i + !!j;
             }
         }
-        return dp[n];
+
+        return 3;
     }
 };
 
