@@ -24,8 +24,6 @@ Explanation: 13 = 4 + 9.
 
 #include <complex>
 #include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 
