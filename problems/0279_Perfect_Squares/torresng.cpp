@@ -50,9 +50,7 @@ void test_case_1() { assert(Solution().numSquares(12) == 3); }
 void test_case_2() { assert(Solution().numSquares(13) == 2); }
 
 int main(void) {
-    /*
-     *test_case_1();
-     */
+    test_case_1();
     test_case_2();
 
     return 0;
