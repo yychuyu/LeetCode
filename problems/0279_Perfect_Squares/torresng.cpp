@@ -2,56 +2,47 @@
  *   Copyright (C) 2019 All rights reserved.
  *
  *   Auth     ：Torres Ng
- *   Create Time ：2019/04/15
+ *   Create Time ：2019/04/19
  *
  ***************************************************************/
 /**************************************************************
-Given a positive integer n, find the least number of perfect square numbers (for
-example, 1, 4, 9, 16, ...) which sum to n.
+You are a product manager and currently leading a team to develop a new product.
+Unfortunately, the latest version of your product fails the quality check. Since
+each version is developed based on the previous version, all the versions after
+a bad version are also bad.
 
-Example 1:
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first
+bad one, which causes all the following ones to be bad.
 
-Input: n = 12
-Output: 3
-Explanation: 12 = 4 + 4 + 4.
+You are given an API bool isBadVersion(version) which will return whether
+version is bad. Implement a function to find the first bad version. You should
+minimize the number of calls to the API.
 
-Example 2:
+Example:
 
-Input: n = 13
-Output: 2
-Explanation: 13 = 4 + 9.
+    Given n = 5, and version = 4 is the first bad version.
+
+    call isBadVersion(3) -> false
+    call isBadVersion(5) -> true
+    call isBadVersion(4) -> true
+
+    Then 4 is the first bad version.
 ***************************************************************/
 
-#include <complex>
-#include <iostream>
-
-using namespace std;
+// Forward declaration of isBadVersion API.
+bool isBadVersion(int version);
 
 class Solution {
   public:
-    int numSquares(int n) {
-        while (n % 4 == 0)
-            n /= 4;
-        if (n % 8 == 7)
-            return 4;
-        for (int i = 0; i * i < n; ++i) {
-            int j = sqrt(n - i * i);
-            if (i * i + j * j == n) {
-                return !!i + !!j;
-            }
+    int firstBadVersion(int n) {
+        int left = 1, right = n;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (isBadVersion(mid))
+                right = mid;
+            else
+                left = mid + 1;
         }
-
-        return 3;
+        return left;
     }
 };
-
-void test_case_1() { assert(Solution().numSquares(12) == 3); }
-
-void test_case_2() { assert(Solution().numSquares(13) == 2); }
-
-int main(void) {
-    test_case_1();
-    test_case_2();
-
-    return 0;
-}
