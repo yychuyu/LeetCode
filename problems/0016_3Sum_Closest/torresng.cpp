@@ -25,21 +25,23 @@ using namespace std;
 class Solution {
   public:
     int threeSumClosest(vector<int> &nums, int target) {
+        int ret = 0, minDiff = INT_MAX;
         sort(nums.begin(), nums.end());
-        int ret = 0x3f3f3f3f;
-        for (unsigned long k = 0; k < nums.size() - 1; ++k) {
-            int i = k + 1, j = nums.size() - 1;
-            while (i < j) {
-                int sum = nums[k] + nums[i] + nums[j];
-                if (sum == target) {
-                    return sum;
-                } else if (sum < target) {
-                    ++i;
-                } else {
-                    --j;
-                }
-                if (abs(sum - target) < abs(ret - target)) {
+        for (unsigned long i = 0; i < nums.size() - 2; ++i) {
+            int l = i + 1, r = nums.size() - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if (abs(sum - target) < minDiff) {
                     ret = sum;
+                    minDiff = abs(sum - target);
+                }
+                if (minDiff == 0) {
+                    return sum;
+                }
+                if (sum > target) {
+                    --r;
+                } else {
+                    ++l;
                 }
             }
         }
@@ -48,39 +50,26 @@ class Solution {
 };
 
 void test_case_1() {
-    Solution s = Solution();
     vector<int> nums{-1, 2, 1, -4};
-    int target = 1;
-    int ans = 2;
-    assert(s.threeSumClosest(nums, target) == ans);
+    assert(Solution().threeSumClosest(nums, 1) == 2);
 }
 
 void test_case_2() {
-    Solution s = Solution();
     vector<int> nums{1, 1, 1, 1};
-    int target = -100;
-    int ans = 3;
-    assert(s.threeSumClosest(nums, target) == ans);
+    assert(Solution().threeSumClosest(nums, -100) == 3);
 }
 
 void test_case_3() {
-    Solution s = Solution();
     vector<int> nums{1, 1, 1, 0};
-    int target = -100;
-    int ans = 2;
-    assert(s.threeSumClosest(nums, target) == ans);
+    assert(Solution().threeSumClosest(nums, -100) == 2);
 }
 
 void test_case_4() {
-    Solution s = Solution();
-    vector<int> nums{-1,2,1,-4};
-    int target = 1;
-    int ans = 2;
-    assert(s.threeSumClosest(nums, target) == ans);
+    vector<int> nums{-1, 2, 1, -4};
+    assert(Solution().threeSumClosest(nums, 1) == 2);
 }
 
 void test_case_5() {
-    Solution s = Solution();
     vector<int> nums{13,  2,   0,   -14, -20, 19,  8,   -5,  -13, -3,  20,  15,
                      20,  5,   13,  14,  -17, -7,  12,  -6,  0,   20,  -19, -1,
                      -15, -2,  8,   -2,  -9,  13,  0,   -3,  -18, -9,  -9,  -19,
@@ -93,9 +82,12 @@ void test_case_5() {
                      2,   -16, 14,  18,  12,  13,  5,   0,   5,   6
 
     };
-    int target = -59;
-    int ans = -58;
-    assert(s.threeSumClosest(nums, target) == ans);
+    assert(Solution().threeSumClosest(nums, -59) == -58);
+}
+
+void test_case_6() {
+    vector<int> nums{0, 5, -1, -2, 4, -1, 0, -3, 4, -5};
+    assert(Solution().threeSumClosest(nums, 1) == 1);
 }
 
 int main(void) {
@@ -104,6 +96,7 @@ int main(void) {
     test_case_3();
     test_case_4();
     test_case_5();
+    test_case_6();
 
     return 0;
 }
