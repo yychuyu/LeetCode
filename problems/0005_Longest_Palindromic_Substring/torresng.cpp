@@ -22,6 +22,7 @@ Example 2:
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include <cassert>
 
 using namespace std;
@@ -29,22 +30,26 @@ using namespace std;
 class Solution {
 public:
     string longestPalindrome(string s) {
-        if(s.empty()) return "";
-        int left = 0, right = 0, maxLength = 0;
-        bool dp[s.size()][s.size()];
-        memset(dp, false, s.size()*s.size()*sizeof(bool));
-        for(int j = 0; j < s.size(); ++j) {
-            for(int i = 0; i < j; ++i) {
-                dp[i][j] = (s[i] == s[j]) && ((j - i) < 2 || dp[i+1][j-1]);;
-                if(dp[i][j] && ((j - i + 1) > maxLength)) {
-                    left = i;
-                    right = j;
-                    maxLength = j - i + 1;
-                }
-            }
-            dp[j][j] = true;
+        string t = "$#";
+        for(auto c : s) {
+            t += c;
+            t += '#';
         }
-        return s.substr(left, right-left+1);
+        vector<int> p(t.size(), 0);
+        int mx = 0, id = 0, resLen = 0, resCenter = 0;
+        for(int i = 1; i < t.size(); i++) {
+            p[i] = mx > i ? min(p[2 * id - i], mx - i) : 1;
+            while(t[i + p[i]] == t[i - p[i]]) ++p[i];
+            if(mx < i + p[i]) {
+                mx = i + p[i];
+                id = i;
+            }
+            if(resLen < p[i]) {
+                resLen = p[i];
+                resCenter = i;
+            }
+        }
+        return s.substr((resCenter - resLen) / 2, resLen - 1);
     }
 
 };
