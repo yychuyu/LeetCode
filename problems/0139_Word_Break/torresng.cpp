@@ -46,24 +46,17 @@ class Solution {
   public:
     bool wordBreak(string s, vector<string> &wordDict) {
         unordered_set<string> set(wordDict.begin(), wordDict.end());
-        vector<int> memo(s.size(), -1);
-        return check(s, 0, set, memo);
-    }
+        vector<bool> dp(s.size() + 1, false);
+        dp[0] = true;
 
-    bool check(string &s, int start, unordered_set<string> &set,
-               vector<int> &memo) {
-        if ((unsigned long)start >= s.size())
-            return true;
-        if (memo[start] != -1)
-            return memo[start];
-
-        for (unsigned long i = start + 1; i <= s.size(); ++i) {
-            if (set.count(s.substr(start, i - start)) &&
-                check(s, i, set, memo)) {
-                return memo[start] = 1;
+        for (unsigned long i = 0; i < s.size(); ++i) {
+            for (unsigned long j = i + 1; j <= s.size(); ++j) {
+                if (dp[i] && set.count(s.substr(i, j - i))) {
+                    dp[j] = true;
+                }
             }
         }
-        return memo[start] = 0;
+        return dp[s.size()];
     }
 };
 
