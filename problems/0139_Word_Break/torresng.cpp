@@ -49,11 +49,13 @@ class Solution {
         vector<bool> dp(s.size() + 1, false);
         dp[0] = true;
 
-        for (unsigned long i = 0; i < s.size(); ++i) {
-            for (unsigned long j = i + 1; j <= s.size(); ++j) {
-                if(!dp[i]) break;
-                if (set.count(s.substr(i, j - i))) {
-                    dp[j] = true;
+        for (unsigned long i = 1; i <= s.size(); ++i) {
+            for (int j = i - 1; j >= 0; --j) {
+                if (dp[j]) {
+                    if (set.find(s.substr(j, i - j)) != set.end()) {
+                        dp[i] = true;
+                        break;
+                    }
                 }
             }
         }
