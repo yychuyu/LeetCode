@@ -49,41 +49,41 @@ class Solution {
   public:
     vector<vector<int>> pathSum(TreeNode *root, int sum) {
         vector<vector<int>> res;
-        vector<int> tmp;
-        if(root == nullptr) return res;
-        DFS(root, sum, tmp, res);
+        vector<int> path;
+        if (root == nullptr)
+            return res;
+        dfs(root, sum, path, res);
         return res;
     }
 
-    void DFS(TreeNode *root, int sum, vector<int> &tmp,
+    void dfs(TreeNode *root, int sum, vector<int> &path,
              vector<vector<int>> &res) {
         if (root == nullptr)
             return;
-        tmp.push_back(root->val);
+        path.push_back(root->val);
         sum -= root->val;
         if (root->left == nullptr && root->right == nullptr && sum == 0) {
-            res.push_back(tmp);
-            tmp.pop_back();
-            return;
+            res.push_back(path);
+        } else {
+            dfs(root->left, sum, path, res);
+            dfs(root->right, sum, path, res);
         }
-        DFS(root->left, sum, tmp, res);
-        DFS(root->right, sum, tmp, res);
-        tmp.pop_back();
+        path.pop_back();
         return;
     }
 };
 
 bool compare(vector<vector<int>> v1, vector<vector<int>> v2) {
-    if(v1.size() != v2.size()) {
+    if (v1.size() != v2.size()) {
         return false;
     }
-    for(unsigned long i = 0; i < v1.size(); ++i) {
-        if(v1[i].size() != v2[i].size()) {
+    for (unsigned long i = 0; i < v1.size(); ++i) {
+        if (v1[i].size() != v2[i].size()) {
             return false;
         }
         unsigned long size = v1[i].size();
-        for(unsigned long j = 0;j < size; ++j) {
-            if(v1[i][j] != v2[i][j]) {
+        for (unsigned long j = 0; j < size; ++j) {
+            if (v1[i][j] != v2[i][j]) {
                 return false;
             }
         }
