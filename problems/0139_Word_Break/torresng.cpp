@@ -51,7 +51,8 @@ class Solution {
 
         for (unsigned long i = 0; i < s.size(); ++i) {
             for (unsigned long j = i + 1; j <= s.size(); ++j) {
-                if (dp[i] && set.count(s.substr(i, j - i))) {
+                if(!dp[i]) break;
+                if (set.count(s.substr(i, j - i))) {
                     dp[j] = true;
                 }
             }
