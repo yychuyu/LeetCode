@@ -128,6 +128,7 @@ void test_case_2() {
 
 int main(void) {
     test_case_1();
+    test_case_2();
 
     return 0;
 }
