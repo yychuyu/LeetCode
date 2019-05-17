@@ -47,7 +47,7 @@ class Solution {
         for (int j = 2; j <= n; ++j) {
             for (int i = j - 1; i > 0; --i) {
                 int global_min = INT_MAX;
-                for (int k = j - 1; k > i; --k) {
+                for (int k = i + 1; k < j; ++k) {
                     int local_max = k + max(dp[i][k - 1], dp[k + 1][j]);
                     global_min = min(global_min, local_max);
                 }
@@ -56,6 +56,27 @@ class Solution {
         }
         return dp[1][n];
     }
+/*
+ *    int getMoneyAmount(int n) {
+ *        vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+ *        return helper(1, n, dp);
+ *    }
+ *
+ *    int helper(int start, int end, vector<vector<int>> &dp) {
+ *        if (start >= end)
+ *            return 0;
+ *        if (dp[start][end] != 0)
+ *            return dp[start][end];
+ *        int global_min = INT_MAX;
+ *        for (int k = start; k <= end; ++k) {
+ *            int local_max =
+ *                k + max(helper(start, k - 1, dp), helper(k + 1, end, dp));
+ *            global_min = min(global_min, local_max);
+ *        }
+ *        dp[start][end] = global_min;
+ *        return dp[start][end];
+ *    }
+ */
 };
 
 void test_case_1() { assert(Solution().getMoneyAmount(10) == 16); }
