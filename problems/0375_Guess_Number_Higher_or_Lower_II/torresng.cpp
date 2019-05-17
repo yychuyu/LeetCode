@@ -53,7 +53,6 @@ class Solution {
                         global_min = local_max;
                 }
                 dp[i][j] = (i + 1 == j) ? i : global_min;
-                cout << "dp[" << i << "," << j << "] : \t " << dp[i][j] << endl;
             }
         }
         return dp[1][n];
