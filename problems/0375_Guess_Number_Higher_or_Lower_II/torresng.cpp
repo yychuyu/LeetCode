@@ -49,8 +49,7 @@ class Solution {
                 int global_min = INT_MAX;
                 for (int k = j - 1; k > i; --k) {
                     int local_max = k + max(dp[i][k - 1], dp[k + 1][j]);
-                    if (global_min > local_max)
-                        global_min = local_max;
+                    global_min = min(global_min, local_max);
                 }
                 dp[i][j] = (i + 1 == j) ? i : global_min;
             }
