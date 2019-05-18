@@ -36,21 +36,30 @@ using namespace std;
 class Solution {
   public:
     int coinChange(vector<int> &coins, int amount) {
-        int res = 0;
-        vector<int> dp(amount + 1, numeric_limits<int>::max());
-        dp[0] = 0;
         sort(coins.begin(), coins.end());
-        for (int i = 1; i <= amount; ++i) {
-            for (vector<int>::size_type j = 0; j < coins.size(); ++j) {
-                if (coins[j] > i) {
-                    break;
-                }
-                if (dp[i - coins[j]] != numeric_limits<int>::max()) {
-                    dp[i] = min(dp[i], dp[i - coins[j]] + 1);
-                }
+        vector<int> memo(amount + 1, numeric_limits<int>::max());
+        memo[0] = 0;
+        return coinChangeDFS(coins, amount, memo);
+    }
+
+    int coinChangeDFS(vector<int> &coins, int target, vector<int> &memo) {
+        if (target < 0) {
+        }
+        if (memo[target] != numeric_limits<int>::max()) {
+            return memo[target];
+        }
+        for (vector<int>::size_type i = 0; i < coins.size(); ++i) {
+            if (coins[i] > target) {
+                break;
+            }
+            int tmp = coinChangeDFS(coins, target - coins[i], memo);
+            if (tmp != -1) {
+                memo[target] = min(memo[target], tmp + 1);
             }
         }
-        return (dp[amount] == numeric_limits<int>::max()) ? -1 : dp[amount];
+        return memo[target] = (memo[target] == numeric_limits<int>::max())
+                                  ? -1
+                                  : memo[target];
     }
 };
 
@@ -72,9 +81,16 @@ void test_case_3() {
     assert(Solution().coinChange(coins, amount) == 8);
 }
 
+void test_case_4() {
+    vector<int> coins{186, 419, 83, 408};
+    int amount = 6249;
+    assert(Solution().coinChange(coins, amount) == 20);
+}
+
 int main(void) {
     test_case_1();
     test_case_2();
     test_case_3();
+    test_case_4();
     return 0;
 }
