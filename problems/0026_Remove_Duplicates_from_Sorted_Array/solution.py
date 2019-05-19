@@ -15,3 +15,16 @@ class Solution:
 				index += 1
 				nums[index] = n
 		return index+1
+
+# 之所以,需要对空数组做特殊处理,是因为数组为空,和数组只有一个元素的时候
+# index的值是一样的都是0,那么返回值为index+1即为1,这样是无法区分这两种情况的
+# 所以,有一个新的改进方法,把index初始值改为-1,这样数组为空和数组只有一个元素
+# 时,两者的index值就不一样了
+class Solution:
+	def removeDuplicates(self, nums):
+		index = -1
+		for n in nums:
+			if index < 0 or n != nums[index]:
+				index += 1
+				nums[index] = n
+		return index + 1
