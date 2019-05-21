@@ -23,7 +23,6 @@ Example:
     Explanation: Because the path 1?3?1?1?1 minimizes the sum.
 ***************************************************************/
 
-#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -40,12 +39,9 @@ class Solution {
             dp[i] = dp[i - 1] + grid[0][i];
         }
         for (vector<int>::size_type i = 1; i < n; ++i) {
-            for (vector<int>::size_type j = 0; j < m; ++j) {
-                if (j == 0) {
-                    dp[j] = dp[j] + grid[i][j];
-                } else {
-                    dp[j] = grid[i][j] + min(dp[j - 1], dp[j]);
-                }
+            dp[0] = dp[0] + grid[i][0];
+            for (vector<int>::size_type j = 1; j < m; ++j) {
+                dp[j] = grid[i][j] + min(dp[j - 1], dp[j]);
             }
         }
         return dp[m - 1];
@@ -59,6 +55,5 @@ void test_case_1() {
 
 int main(void) {
     test_case_1();
-
     return 0;
 }
