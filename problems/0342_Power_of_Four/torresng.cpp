@@ -30,8 +30,7 @@ using namespace std;
 class Solution {
   public:
     bool isPowerOfFour(int num) {
-        return num > 0 &&
-               int(log10(num) / log10(4)) - log10(num) / log10(4) == 0;
+        return num > 0 && !(num & (num - 1)) && (num & 0x55555555) == num;
     }
 };
 
