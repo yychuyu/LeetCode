@@ -2,7 +2,7 @@
  *   Copyright (C) 2019 All rights reserved.
  *
  *   Auth     ：Torres Ng
- *   Create Time ：2019/05/22
+ *   Create Time ：2019/05/23
  *
  ***************************************************************/
 /**************************************************************
@@ -92,6 +92,5 @@ int main(void) {
     test_case_1();
     test_case_2();
     test_case_3();
-
     return 0;
 }
