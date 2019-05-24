@@ -43,7 +43,11 @@ class Solution {
                         ++v[k];
                     }
                 }
-                res = max(res, getSquareArea(v, j - i + 1));
+                int area = getSquareArea(v, j - i + 1);
+                if (area == 0) {
+                    break;
+                }
+                res = max(res, area);
             }
         }
         return res;
