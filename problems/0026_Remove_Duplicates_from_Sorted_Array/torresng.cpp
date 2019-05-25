@@ -1,29 +1,51 @@
 /***************************************************************
-*   Copyright (C) 2018 All rights reserved.
-*
-*   Auth     ：Torres Ng
-*   Create Time ：2018/10/08
-*
-***************************************************************/
+ *   Copyright (C) 2018 All rights reserved.
+ *
+ *   Auth     ：Torres Ng
+ *   Create Time ：2018/10/08
+ *
+ ***************************************************************/
 /**************************************************************
-题目：
-给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+Given a sorted array nums, remove the duplicates in-place such that each element
+appear only once and return the new length.
 
-不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
+Do not allocate extra space for another array, you must do this by modifying the
+input array in-place with O(1) extra memory.
 
 Example 1:
-给定数组 nums = [1,1,2], 
 
-函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 
+    Given nums = [1,1,2],
 
-你不需要考虑数组中超出新长度后面的元素。
+    Your function should return length = 2, with the first two elements of nums
+being 1 and 2 respectively.
+
+    It doesn't matter what you leave beyond the returned length.
 
 Example 2:
-给定 nums = [0,0,1,1,1,2,2,3,3,4],
 
-函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。
+    Given nums = [0,0,1,1,1,2,2,3,3,4],
 
-你不需要考虑数组中超出新长度后面的元素。
+    Your function should return length = 5, with the first five elements of nums
+being modified to 0, 1, 2, 3, and 4 respectively.
+
+    It doesn't matter what values are set beyond the returned length.
+
+Clarification:
+
+Confused why the returned value is an integer but your answer is an array?
+
+Note that the input array is passed in by reference, which means modification to
+the input array will be known to the caller as well.
+
+Internally you can think of this:
+
+    // nums is passed in by reference. (i.e., without making a copy)
+    int len = removeDuplicates(nums);
+
+    // any modification to nums in your function would be known by the caller.
+    // using the length returned by your function, it prints the first len
+elements. for (int i = 0; i < len; i++) { print(nums[i]);
+    }
 ***************************************************************/
 
 #include <iostream>
@@ -31,38 +53,43 @@ Example 2:
 
 using namespace std;
 
-int removeDuplicates(vector<int> &nums) {
-    if(nums.empty()) {
-        return 0;
-    }
-    vector<int>::iterator iter1 = nums.begin();
-    vector<int>::iterator iter2 = iter1 + 1;
-    size_t count = nums.size();
-
-    while(iter2 != nums.end()) {
-        if(*iter1 == *iter2) {
-            --count;
-        } else {
-            if((iter2 - iter1) == 1) {
-                ++iter1;
-            } else {
-                ++iter1;
-                *iter1 = *iter2;
+class Solution {
+  public:
+    int removeDuplicates(vector<int> &nums) {
+        if (nums.empty())
+            return 0;
+        int k = 0;
+        for (unsigned long i = 1; i < nums.size(); ++i) {
+            if (nums[i] != nums[k]) {
+                nums[++k] = nums[i];
             }
         }
-        ++iter2;
+        return k + 1;
     }
-    return count;
+};
+
+void test_case_1() {
+    vector<int> nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+    int ans = 5;
+    vector<int> ansNums = {0, 1, 2, 3, 4};
+    assert(Solution().removeDuplicates(nums) == ans);
+    for (int i = 0; i < ans; i++) {
+        assert(nums[i] == ansNums[i]);
+    }
+}
+
+void test_case_2() {
+    vector<int> nums = {1, 1, 2};
+    int ans = 2;
+    vector<int> ansNums = {1, 2};
+    assert(Solution().removeDuplicates(nums) == ans);
+    for (int i = 0; i < ans; i++) {
+        assert(nums[i] == ansNums[i]);
+    }
 }
 
 int main(void) {
-    vector<int> nums = {0,0,1,1,1,2,2,3,3,4};
-    size_t len = removeDuplicates(nums);
-    cout << "len: " << len << endl;
-    for(int i = 0; i < len; i++) {
-        cout << nums[i] << ' ';
-    }
-    cout << endl;
-
+    test_case_1();
+    test_case_2();
     return 0;
 }

@@ -20,3 +20,4 @@ out/
 */.DS_Store
 *.out
 **/torresng_rust/debug
+.ccls
