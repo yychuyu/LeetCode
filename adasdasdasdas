@@ -1,0 +1,592 @@
+[33mcommit 3cbeb4921c350d0c2aebcb85775973e733883700[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: hzka <1578171148@qq.com>
+Date:   Sun May 26 17:35:52 2019 +0800
+
+    kevinHe
+
+[33mcommit 7ff9e9cf005b2981ffce55b416d0db57a7e23a86[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 0685c7b 1d1042e
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:42:33 2019 +0800
+
+    Merge pull request #924 from klgentle/master
+    
+    20190520
+
+[33mcommit 0685c7b99c1e63a26e6c8a0b247876197b2175c0[m
+Merge: 92489b9 1ae7265
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:41:55 2019 +0800
+
+    Merge pull request #923 from hebust-fengyu/master
+    
+    hebust-fengyu_0001_Two_Sum.c
+
+[33mcommit 92489b978d06d5d22961dda312cf1d0c790c11c6[m
+Merge: 3a756b1 3a4367f
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:41:36 2019 +0800
+
+    Merge pull request #922 from bingomacs/master
+    
+    two sum
+
+[33mcommit 3a756b1536fb0ffada185b54790246ad3be16d12[m
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:40:02 2019 +0800
+
+    delete submittors folder
+
+[33mcommit ecd7f7e20a732418fba984b57d69fdea27f6c5b4[m
+Merge: 39f9102 7eae903
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:26:16 2019 +0800
+
+    Merge pull request #921 from torresng/master
+    
+    No. 0375
+
+[33mcommit 39f91020e0a804f3b5938bff23638eda7a79c859[m
+Merge: 9983fe3 ef006ef
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:25:31 2019 +0800
+
+    Merge pull request #920 from zqxl/master
+    
+    朝搴夕揽添加了3和7
+
+[33mcommit 9983fe377a57a780ea5c2d59f0600132eb8f5455[m
+Merge: 8552119 9bb1221
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:24:55 2019 +0800
+
+    Merge pull request #919 from Rallnav/master
+    
+    0004&0025
+
+[33mcommit 85521197a92e3d7afec7b92dc74fdfee81378ea2[m
+Merge: ab36fff 60eb1cf
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:24:06 2019 +0800
+
+    Merge pull request #916 from lionxu/master
+    
+    20. 有效的括号
+
+[33mcommit ab36fffc0d82f8ce9f8a840574ff6afd415c9e3c[m
+Merge: 4ad349f 1ce72f5
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:22:55 2019 +0800
+
+    Merge pull request #914 from stevenshuang/master
+    
+    第四次打卡
+
+[33mcommit 4ad349f27a65ec0c5817ce6cb6ccb4ac2a5923cd[m
+Merge: 5919129 d789c5c
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:22:26 2019 +0800
+
+    Merge pull request #913 from clipperL/master
+    
+    finish this week's work by dachuan on May 3.
+
+[33mcommit 591912947c42321c9a0e6f84e77a7395866ed717[m
+Merge: 8e22f3a 009089d
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:21:55 2019 +0800
+
+    Merge pull request #912 from wangiii/master
+    
+    add 0061&0078
+
+[33mcommit 8e22f3a4afa0a377b557b83e10004fe0fd8c10e1[m
+Merge: e3ef97c a389879
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:21:28 2019 +0800
+
+    Merge pull request #911 from NICE-FUTURE/master
+    
+    add solution 0893, 0917, 0925, 0929, 0937, 0217, 0283
+
+[33mcommit e3ef97ce232a41aac89deee4e0f937df4cd12900[m
+Merge: 429a6c6 a6c233d
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Tue May 21 09:20:22 2019 +0800
+
+    Merge pull request #909 from FiveFlowerMeaTTT/master
+    
+    4.22-4.28
+
+[33mcommit 7eae903ec34d2412a3706cbbd81b6f91246a29e3[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Mon May 20 23:58:46 2019 +0800
+
+    remove iostream head
+
+[33mcommit 1d1042ed0bf1869b6e3b14b23c3410e4e3cb1887[m
+Author: klgentle <klgentle@sina.com>
+Date:   Mon May 20 22:56:15 2019 +0800
+
+    20190520
+
+[33mcommit e643b15f1bcde59fcd2521baf7a7bf6f28479ecc[m
+Author: klgentle <klgentle@sina.com>
+Date:   Mon May 20 22:50:30 2019 +0800
+
+    20190520
+
+[33mcommit 1ae7265f0b8d39787d47c0b5e9c2572d4f1b3ff2[m
+Author: hebust-fengyu <feng--yu@outlook.com>
+Date:   Mon May 20 19:11:14 2019 +0800
+
+    submit hebust-fengyu_0001.txt
+
+[33mcommit 6cccdd2a16a510905fef8a96a52dc2a910a8dc71[m
+Author: hebust-fengyu <feng--yu@outlook.com>
+Date:   Mon May 20 19:08:02 2019 +0800
+
+    hebust-fengyu 0001_Two_Sum.c
+
+[33mcommit b47143d98de642e06e68cabc3478e199136f857b[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Sun May 19 22:08:33 2019 +0800
+
+    No.0322 20ms
+
+[33mcommit 60eb1cfe3fba0fa5bdbebf11f9375038fc234308[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sun May 19 21:49:13 2019 +0800
+
+    删除重复元素代码优化
+
+[33mcommit d789c5ce157e7887f3fbf78d91ab121cceb3ac67[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 19 18:33:52 2019 +0800
+
+    add the hash of second work this week by dachuan on May 19.
+
+[33mcommit d75558720e02ea6f082598b66a220b087a37d14f[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 19 18:32:56 2019 +0800
+
+    add 1025_Divisor_Game by dachuan.
+
+[33mcommit 20055c7a918d81b39a9d441173a85c18f5f23a01[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 19 18:30:52 2019 +0800
+
+    add the hash of the first work this week by dachuan on May 19.
+
+[33mcommit ff7cc68941b331a15334356921b0e2713f652734[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 19 18:29:11 2019 +0800
+
+    add 0682_Baseball_Game by dachuan.
+
+[33mcommit ad6c093decebe135df9c6de3ac7ed8a997f2871b[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Sat May 18 17:52:47 2019 +0800
+
+    commit id
+
+[33mcommit e77c82e00e5792bb867c263c0305a1b9755be7fe[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Sat May 18 17:52:33 2019 +0800
+
+    No.0322
+
+[33mcommit f729ce879a04def404a6f445c355f046ddc510c1[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Sat May 18 17:18:33 2019 +0800
+
+    comment
+
+[33mcommit cc06c90b6309cc0e12bdc654684a5b00e5a8d165[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Sat May 18 17:18:25 2019 +0800
+
+    No.375
+
+[33mcommit 24c55a35690e37253f5d84f0f570095f23f45abb[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sat May 18 15:56:13 2019 +0800
+
+    add commit id
+
+[33mcommit 48e3ac3174aa5fa65433751d44ff727b72972e44[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sat May 18 15:55:20 2019 +0800
+
+    remove duplicates from sorted array
+
+[33mcommit 3a4367f75fa2b70dd9f6e930ff66458e0ae3fd59[m
+Author: bin <bin6160@126.com>
+Date:   Sat May 18 15:39:25 2019 +0800
+
+    add problem1 commit id
+
+[33mcommit b5a6942b3fb38ff24ab33bd4dccef899f1b72224[m
+Author: bin <bin6160@126.com>
+Date:   Sat May 18 15:24:09 2019 +0800
+
+    problem1 twoSum
+
+[33mcommit 40722e68eefb9cc904b5d03858bcb63de1e832b0[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Fri May 17 14:54:15 2019 +0800
+
+    No.0375 recursive
+
+[33mcommit b17080d086cf4b887bd9dc3b9cfb3932c520469a[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Fri May 17 14:38:05 2019 +0800
+
+    No.0375
+
+[33mcommit f673b946c5779d8054b90fb9dbcd33b80d9c4b4a[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Fri May 17 14:30:31 2019 +0800
+
+    No.0375 remove output
+
+[33mcommit 2d4165bc619e1bdb445b9f8b15266acdfaf26a4b[m
+Author: Torres Ng <torresng2684cte@gmail.com>
+Date:   Fri May 17 14:30:15 2019 +0800
+
+    No.0375
+
+[33mcommit a389879f77ebce991b076313583aeca4c689495f[m
+Merge: 5bf8664 3157269
+Author: NICE-FUTURE <2375558167@qq.com>
+Date:   Fri May 17 01:05:00 2019 +0800
+
+    Merge branch 'dev'
+
+[33mcommit 31572690dc619219607daf6a00b73d9c145703ad[m
+Author: NICE-FUTURE <2375558167@qq.com>
+Date:   Fri May 17 01:04:40 2019 +0800
+
+    add solution 0217 0283
+
+[33mcommit 1ce72f5439de8865c3bf4da0ea2a8b2f146b629f[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Wed May 15 19:31:44 2019 +0800
+
+    update
+
+[33mcommit 43e7971ee1129f8d017f7c82c4c0c34e2e6d1859[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Wed May 15 19:31:19 2019 +0800
+
+    0079_Word_Search
+
+[33mcommit cd0a5e8bf469b6362231093638f8af855a26f9a7[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Wed May 15 15:11:41 2019 +0800
+
+    update
+
+[33mcommit 35f535b83d22bd5c53fee94b4a54fc832a3aeb32[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Wed May 15 15:11:17 2019 +0800
+
+    0071_Simplify_Path
+
+[33mcommit ae7b2d88f4c270f8aa6420860931037f7bb9a1da[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 12 21:45:44 2019 +0800
+
+    add the hash of the second work this week by dachuan on May 12.
+
+[33mcommit 55ac6bf34589984336f6be88627ff8977295b671[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 12 21:44:35 2019 +0800
+
+    add 0811_Subdomain_Visit_Count by dachuan.
+
+[33mcommit 4c744e8cc6c726cf5927192bcac51651d6763dd8[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 12 21:42:18 2019 +0800
+
+    add the hash of first work this week by dachuan on May 12.
+
+[33mcommit 2e965052ed6add95fabf15eba0464220cd20dd86[m
+Author: clipperl <clipperl@126.com>
+Date:   Sun May 12 21:40:09 2019 +0800
+
+    add 0349_Intersection_of_Two_Arrays by dachuan on May 12.
+
+[33mcommit 318cc161c7a13c091f6be820f3311dcf825a2fa3[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sat May 11 16:29:36 2019 +0800
+
+    add commit id
+
+[33mcommit d4e1add9071009832edba2e77f1222893799a07d[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sat May 11 16:28:50 2019 +0800
+
+    21 merge two lists
+
+[33mcommit 5bf866487969d213c0c6173c8715e72d64ceac5f[m
+Merge: 6a3d09b 6284288
+Author: NICE-FUTURE <2375558167@qq.com>
+Date:   Sat May 11 13:13:53 2019 +0800
+
+    Merge branch 'dev'
+
+[33mcommit 6284288025c66d8e8974c6d8dbc3893e9227cb36[m
+Author: NICE-FUTURE <2375558167@qq.com>
+Date:   Sat May 11 13:13:42 2019 +0800
+
+    add solution 0929 0937
+
+[33mcommit a41140938fdbfcc7ae358ed52b058ed534d5ae73[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Thu May 9 20:07:07 2019 +0800
+
+    update
+
+[33mcommit 672aebbfc4201cf4ee3a4b2d93e9d6e5069c83eb[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Thu May 9 20:06:41 2019 +0800
+
+    0166_Fraction_to_Recurring_Decimal
+
+[33mcommit b88d74654ac944c6a48d0ee60cae6b5c93bda944[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Thu May 9 18:23:22 2019 +0800
+
+    update
+
+[33mcommit 11eb3caa5a58d33c5013f35998db9723116e1aca[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Thu May 9 18:22:54 2019 +0800
+
+    0041_First_Missing_Positive
+
+[33mcommit a901be80da98db2e7df5e7cefa2f671aa4a9c202[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Wed May 8 20:06:02 2019 +0800
+
+    update
+
+[33mcommit a70bd190317f0c8ec3aafe6960814e03e8c08f0e[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Wed May 8 20:05:31 2019 +0800
+
+    0030_Substring_with_concatenation_of_All_Words
+
+[33mcommit ef006efd687a26028c43fdecb22003b8b8890e1c[m
+Author: zqxl <416477054@qq.com>
+Date:   Sun May 5 19:53:40 2019 +0800
+
+    朝搴夕揽添加了submittor
+
+[33mcommit 3d9e0ffd57e83156672b2950e82bf5a208066489[m
+Author: zqxl <416477054@qq.com>
+Date:   Sun May 5 19:52:32 2019 +0800
+
+    朝搴夕揽添加了3和7.
+
+[33mcommit 9bb1221be6ce4a42863856c90065a4589e018087[m
+Author: Rallnav <zeyuchenyu@126.com>
+Date:   Sun May 5 19:43:26 2019 +0800
+
+    Update Elon.py
+
+[33mcommit 382c43f2ee309da7315dc1862ef0de6b9e7ce496[m
+Merge: 6a9e718 429a6c6
+Author: Rallnav <zeyuchenyu@126.com>
+Date:   Sun May 5 19:40:42 2019 +0800
+
+    Merge pull request #8 from yychuyu/master
+    
+    update
+
+[33mcommit 6a9e718cd5543575ef48be40ad6819a0a43934b6[m
+Author: Elon <Elon@DESKTOP-I8F345R>
+Date:   Sun May 5 17:02:22 2019 +0800
+
+    0004&0025
+
+[33mcommit d604780d4c8b6577d12f7767b0a3744191072468[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sun May 5 08:28:47 2019 +0800
+
+    add commit ID
+
+[33mcommit bbeb2985e6bee1f0ff658fa89683b13cd876799d[m
+Author: lionxu <xuzuhai163@163.com>
+Date:   Sun May 5 08:27:55 2019 +0800
+
+    valid parentheses
+
+[33mcommit 5ccc6a676db2661185d4542f4234f67e2a773bec[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Sat May 4 09:56:39 2019 +0800
+
+    update
+
+[33mcommit b2935405c01b41c866f11fc17eccf6fec39e93cb[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Sat May 4 09:55:47 2019 +0800
+
+    0104_Maximum_Depth_of_Binary_Tree
+
+[33mcommit 58a16fa3c9fe5bf0598a893dd16403f8d48661a6[m
+Author: stevenshuang <stevenshuang521@gmail.com>
+Date:   Sat May 4 09:55:34 2019 +0800
+
+    0198_House_Robber
+
+[33mcommit ed6e82d25da58221107756fcbd7e5aeab221886e[m
+Author: clipperl <clipperl@126.com>
+Date:   Fri May 3 22:29:38 2019 +0800
+
+    add the hash of second work this week by dachuan on May 3.
+
+[33mcommit e74ea920b6100673da70f45f6f89ce06900a5539[m
+Author: clipperl <clipperl@126.com>
+Date:   Fri May 3 22:27:25 2019 +0800
+
+    add 1002_Find_Common_Characters by dachuan.
+
+[33mcommit 4cb6ecabec375eed270eab0e8c1ef03137de89b3[m
+Author: clipperl <clipperl@126.com>
+Date:   Fri May 3 22:05:50 2019 +0800
+
+    add the hash of first work this week by dachuan on May 3.
+
+[33mcommit 009089d1a2ec301c9715f1c134f097834428f8c7[m
+Author: JasonVV <jasonwangiii@outlook.com>
+Date:   Fri May 3 20:46:39 2019 +0800
+
+    add submittors/jasonvv-2.txt
+
+[33mcommit a1df8b83d10951bd48233e2cb012e2d8dcac0582[m
+Author: JasonVV <jasonwangiii@outlook.com>
+Date:   Fri May 3 20:45:07 2019 +0800
+
+    add 0078_Subsets/jasonvv.java
+
+[33mcommit 772b401e178d2af044a193270ed6092fcbfbb492[m
+Author: JasonVV <jasonwangiii@outlook.com>
+Date:   Fri May 3 20:43:29 2019 +0800
+
+    add submittors/jasonvv-1.txt
+
+[33mcommit 1f1ea3e70f9ec16db2bbf62080d0c1298bb2eafb[m
+Author: JasonVV <jasonwangiii@outlook.com>
+Date:   Fri May 3 20:41:51 2019 +0800
+
+    add 0061_Rotate_List/jasonvv.java
+
+[33mcommit 5bdae212a6518b97128b9013ae63809f9fea961a[m
+Author: clipperl <clipperl@126.com>
+Date:   Fri May 3 17:02:40 2019 +0800
+
+    add 0821_Shortest_Distance_to_a_Character by dachuan.
+
+[33mcommit 6a3d09be2326b2288ed4f8f64fa3f50ffc27da68[m
+Author: NICE-FUTURE <2375558167@qq.com>
+Date:   Tue Apr 30 14:00:29 2019 +0800
+
+    add solution 0893, 0917, 0925
+
+[33mcommit a6c233da7d219ce2cb7f338740146c0687e0ee74[m
+Author: FiveFlowerMeat <867201749@qq.com>
+Date:   Mon Apr 29 14:55:27 2019 +0800
+
+    Create 香蕉宝宝.txt
+
+[33mcommit 49ab7190ed5913d58c7eafd89ca727cc382879d3[m
+Author: FiveFlowerMeat <867201749@qq.com>
+Date:   Mon Apr 29 14:54:14 2019 +0800
+
+    Create banana.py
+
+[33mcommit 3581f61246abab89a0307d12b2d300e9c6ffecca[m
+Author: FiveFlowerMeat <867201749@qq.com>
+Date:   Mon Apr 29 14:52:54 2019 +0800
+
+    Create add_digits_banana.py
+
+[33mcommit c5381f745311efa02dea71784cb7ff59ea772b3b[m
+Merge: 6677c2e 429a6c6
+Author: FiveFlowerMeaTTT <42527934+FiveFlowerMeaTTT@users.noreply.github.com>
+Date:   Mon Apr 29 14:47:14 2019 +0800
+
+    Merge pull request #1 from yychuyu/master
+    
+    更新代码
+
+[33mcommit 6677c2ec0e3bb0bfb2f1c108eb6bce88359312ab[m
+Author: FiveFlowerMeat <867201749@qq.com>
+Date:   Mon Apr 29 14:45:31 2019 +0800
+
+    Delete 香蕉宝宝.txt
+
+[33mcommit 429a6c68b4dd23dbdd18a85ed723936bfbd24b5b[m
+Merge: 8419f70 b56ebe6
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:41:16 2019 +0800
+
+    Merge pull request #907 from beddingearly/master
+    
+    sorry i forget this push
+
+[33mcommit 8419f709c14f314bfaf837a4f8336593f9fd32fb[m
+Merge: 11c40c7 16ba859
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:40:49 2019 +0800
+
+    Merge pull request #906 from abelZW/master
+    
+    第四周
+
+[33mcommit 11c40c75e286c2abdb855d22d8c3cdf992ee3b96[m
+Merge: 0ae050d 9c9be9d
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:40:25 2019 +0800
+
+    Merge pull request #905 from yarkable/master
+    
+    solutions for the fourth week
+
+[33mcommit 0ae050d9355b328c3a7c6a454482f0b36c3edc89[m
+Merge: bc60812 a8fbe17
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:39:50 2019 +0800
+
+    Merge pull request #904 from zou-sq/master
+    
+    415和392
+
+[33mcommit bc6081287b77d58f0a0e3a6b200262ef27bae218[m
+Merge: 574d86c 09b7801
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:39:22 2019 +0800
+
+    Merge pull request #903 from lionxu/master
+    
+    783 and 784
+
+[33mcommit 574d86ca7ac14fb5097b4d4e53413e8bcff6cb83[m
+Merge: c37145a abedfe9
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:38:08 2019 +0800
+
+    Merge pull request #901 from tryturned/master
+    
+    LeetCode commit
+
+[33mcommit c37145aa5cc9b7be660c6f5acbf80ff3271f3bfa[m
+Merge: 48fd48e 4523550
+Author: Alvin Yan <yychuyu@163.com>
+Date:   Mon Apr 29 12:37:36 2019 +0800
+
+    Merge pull request #900 from shyshy903/master
+    
+    shyshy add 07&&08
