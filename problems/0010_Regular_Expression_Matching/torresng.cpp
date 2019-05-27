@@ -64,13 +64,14 @@ Example 5:
 
 #include <cassert>
 #include <iostream>
-#include <string>
 #include <stdio.h>
+#include <string>
 
 using namespace std;
 
 class Solution {
   public:
+    // Recursive
     bool isMatch(string s, string p) {
         if (p.empty()) {
             return s.empty();
@@ -128,14 +129,12 @@ void test_case_7() {
 }
 
 int main(void) {
-    /*
-     *test_case_1();
-     *test_case_2();
-     *test_case_3();
-     *test_case_4();
-     *test_case_5();
-     *test_case_6();
-     */
+    test_case_1();
+    test_case_2();
+    test_case_3();
+    test_case_4();
+    test_case_5();
+    test_case_6();
     test_case_7();
     return 0;
 }
