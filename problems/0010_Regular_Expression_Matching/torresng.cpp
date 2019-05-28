@@ -86,7 +86,6 @@ class Solution {
         while (!s.empty() && (s[0] == p[0] || p[0] == '.')) {
             if (isMatch(s, p.substr(2)))
                 return true;
-        cout << "1" << endl;
             s = s.substr(1);
         }
         return isMatch(s, p.substr(2));
