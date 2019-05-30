@@ -72,9 +72,8 @@ using namespace std;
 
 class Solution {
   public:
+    // Dynamic Programming
     bool isMatch(string s, string p) {
-        cout << endl;
-        cout << "s = " << s << ", p = " << p << endl;
         string::size_type n = s.size(), m = p.size();
         vector<vector<bool>> dp(n + 1, vector<bool>(m + 1, false));
         dp[0][0] = true;
@@ -84,44 +83,13 @@ class Solution {
                     dp[i][j] = i > 0 && dp[i - 1][j - 1] &&
                                (s[i - 1] == p[j - 1] || p[j - 1] == '.');
                 } else {
-                    /*
-                     *if (j == 1) {
-                     *    dp[i][j] = false;
-                     *} else if (j == 1) {
-                     *    cout << endl;
-                     *    cout << s[i - 1] << " " << p[j - 2] << endl;
-                     *    cout << (s[i - 1] == p[j - 2]) << endl;
-                     *    dp[i][j] = i > 0 && (dp[i - 1][j - 1] ||
-                     *                         (s[i - 1] == p[j - 2]) ||
-                     *                         (p[j - 2] == '.'));
-                     *    cout << "dp[i][j] = " << dp[i][j] << endl;
-                     *} else {
-                     *    dp[i][j] =
-                     *        i > 0 &&
-                     *        (dp[i - 1][j - 1] || dp[i - 1][j - 2] ||
-                     *         (s[i - 1] == p[j - 2]) || (p[j - 2] == '.'));
-                     *    if (i == 8 && j == 9) {
-                     *        cout << dp[i - 1][j - 2] << endl;
-                     *    }
-                     *}
-                     */
-                    if (j > 1) {
-                        dp[i][j] =
-                            ((dp[i][j - 1] || dp[i][j - 2]) ||
-                             (i > 0 &&
-                              ((s[i - 1] == p[j - 2]) || (p[j - 2] == '.')) &&
-                              dp[i - 1][j]));
-                    }
+                    dp[i][j] = (j > 1) &&
+                               (dp[i][j - 1] || dp[i][j - 2] ||
+                                (i > 0 && dp[i - 1][j] &&
+                                 (s[i - 1] == p[j - 2] || p[j - 2] == '.')));
                 }
             }
-            cout << "i = " << i << endl;
-            for (decltype(i) j = 0; j <= m; ++j) {
-                cout << "  j = " << j << " -> " << dp[i][j] << ", ";
-            }
-            cout << endl;
         }
-
-        cout << endl << "result: " << dp[n][m] << endl;
         return dp[n][m];
     }
 
