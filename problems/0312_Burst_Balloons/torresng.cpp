@@ -39,24 +39,25 @@ using namespace std;
 class Solution {
   public:
     int maxCoins(vector<int> &nums) {
-
-        nums.insert(nums.begin(), 1);
-        nums.push_back(1);
+        vector<int> nums1(nums.size() + 2);
+        nums1[0] = 1;
+        nums1[nums1.size() - 1] = 1;
+        copy(nums.begin(), nums.end(), next(nums1.begin(), 1));
         vector<vector<int>> dp(nums.size() + 2,
                                vector<int>(nums.size() + 2, 0));
 
-        for (unsigned len = 1; len < nums.size() - 1; ++len) {
-            for (int i = 1; i < nums.size() - len; ++i) {
+        for (unsigned len = 1; len < nums1.size() - 1; ++len) {
+            for (int i = 1; i < nums1.size() - len; ++i) {
                 int j = i + len - 1;
                 for (int k = i; k <= j; ++k) {
                     dp[i][j] = max(dp[i][j],
                                    dp[i][k - 1] +
-                                       nums[i - 1] * nums[k] * nums[j + 1] +
+                                       nums1[i - 1] * nums1[k] * nums1[j + 1] +
                                        dp[k + 1][j]);
                 }
             }
         }
-        return dp[1][nums.size() - 2];
+        return dp[1][nums1.size() - 2];
     }
 };
 
