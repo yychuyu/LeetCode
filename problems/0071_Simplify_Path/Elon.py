@@ -24,3 +24,4 @@ class Solution:
             else:
                 result.append(dictory)
         return '/' + '/'.join(result)
+    
