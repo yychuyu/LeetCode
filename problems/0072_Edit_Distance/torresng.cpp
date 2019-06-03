@@ -46,28 +46,28 @@ using namespace std;
 class Solution {
   public:
     int minDistance(string word1, string word2) {
-        vector<vector<int>> dp(word1.size(), vector<int>(word2.size(), -1));
-        return helper(word1, 0, word2, 0, dp);
+        vector<vector<int>> memo(word1.size(), vector<int>(word2.size(), -1));
+        return helper(word1, 0, word2, 0, memo);
     }
 
     int helper(string &word1, int i, string &word2, int j,
-               vector<vector<int>> &dp) {
+               vector<vector<int>> &memo) {
         if (i == word1.size())
             return word2.size() - j;
         if (j == word2.size())
             return word1.size() - i;
-        if (dp[i][j] != -1)
-            return dp[i][j];
+        if (memo[i][j] != -1)
+            return memo[i][j];
         int res = 0;
         if (word1[i] == word2[j]) {
-            return helper(word1, i + 1, word2, j + 1, dp);
+            return helper(word1, i + 1, word2, j + 1, memo);
         } else {
-            int insertOp = helper(word1, i, word2, j + 1, dp);
-            int deleteOp = helper(word1, i + 1, word2, j, dp);
-            int replaceOp = helper(word1, i + 1, word2, j + 1, dp);
+            int insertOp = helper(word1, i, word2, j + 1, memo);
+            int deleteOp = helper(word1, i + 1, word2, j, memo);
+            int replaceOp = helper(word1, i + 1, word2, j + 1, memo);
             res = res + min(insertOp, min(deleteOp, replaceOp)) + 1;
         }
-        return dp[i][j] = res;
+        return memo[i][j] = res;
     }
 };
 
