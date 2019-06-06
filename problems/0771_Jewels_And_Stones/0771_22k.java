@@ -9,9 +9,9 @@ J 中的字母不重复，J 和 S中的所有字符都是字母。字母区分�
 输入: J = "aA", S = "aAAbbbb"
 输出: 3
 示例 2:
-
 输入: J = "z", S = "ZZ"
 输出: 0
+22k
 */
 class Solution {
     public int numJewelsInStones(String J, String S) {
