@@ -1,3 +1,8 @@
+/*
+  题意：给定一个数字列表，返回其所有可能的排列
+  使用深度优先搜索算法 
+
+*/
 public class Solution {
     /*
      * @param nums: A list of integers.
