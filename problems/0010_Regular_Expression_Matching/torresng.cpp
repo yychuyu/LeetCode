@@ -66,12 +66,34 @@ Example 5:
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class Solution {
   public:
+    // Dynamic Programming
+    bool isMatch(string s, string p) {
+        string::size_type n = s.size(), m = p.size();
+        vector<vector<bool>> dp(n + 1, vector<bool>(m + 1, false));
+        dp[0][0] = true;
+        for (string::size_type i = 0; i <= n; ++i) {
+            for (string::size_type j = 1; j <= m; ++j) {
+                if (p[j - 1] != '*') {
+                    dp[i][j] = i > 0 && dp[i - 1][j - 1] &&
+                               (s[i - 1] == p[j - 1] || p[j - 1] == '.');
+                } else if (j > 1) {
+                    dp[i][j] = dp[i][j - 2] ||
+                               (i > 0 && dp[i - 1][j] &&
+                                (s[i - 1] == p[j - 2] || p[j - 2] == '.'));
+                }
+            }
+        }
+        return dp[n][m];
+    }
+
     // Recursive
+    /*
     bool isMatch(string s, string p) {
         if (p.empty()) {
             return s.empty();
@@ -90,6 +112,7 @@ class Solution {
         }
         return isMatch(s, p.substr(2));
     }
+    */
 };
 
 void test_case_1() {
@@ -98,33 +121,43 @@ void test_case_1() {
 }
 
 void test_case_2() {
-    string s = "aa", p = "a*";
+    string s = "aa", p = "aa";
     assert(Solution().isMatch(s, p) == true);
 }
 
 void test_case_3() {
-    string s = "ab", p = ".*";
+    string s = "aa", p = "a*";
     assert(Solution().isMatch(s, p) == true);
 }
 
 void test_case_4() {
-    string s = "aab", p = "c*a*b";
+    string s = "ab", p = ".*";
     assert(Solution().isMatch(s, p) == true);
 }
 
 void test_case_5() {
+    string s = "aab", p = "c*a*b";
+    assert(Solution().isMatch(s, p) == true);
+}
+
+void test_case_6() {
     string s = "mississippi", p = "mis*is*p*.";
     assert(Solution().isMatch(s, p) == false);
 }
 
-void test_case_6() {
+void test_case_7() {
     string s = "aaa", p = "a.a";
     assert(Solution().isMatch(s, p) == true);
 }
 
-void test_case_7() {
+void test_case_8() {
     string s = "a", p = ".*..a*";
     assert(Solution().isMatch(s, p) == false);
+}
+
+void test_case_9() {
+    string s = "mississippi", p = "mis*is*ip*.";
+    assert(Solution().isMatch(s, p) == true);
 }
 
 int main(void) {
@@ -135,5 +168,7 @@ int main(void) {
     test_case_5();
     test_case_6();
     test_case_7();
+    test_case_8();
+    test_case_9();
     return 0;
 }
