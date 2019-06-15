@@ -7,7 +7,9 @@
  * }
  */
 
-//解题思路，首先这题和整个链表翻转不同，链表的翻转用迭代比较好，这个地方需要先找到要翻转的第m个节点，并且存储第m个节点已经他的前后节点，然后从第m个节点到第n个节点开始翻转，反转过后的第m个节点的next为null，我们要指定m.next=m的前节点，原来m的后节点的next为第n个节点，这样就翻转完毕，返回头节点。
+//解题思路，首先这题和整个链表翻转不同，链表的翻转用迭代比较好，这个地方需要先找到要翻转的第m个节点，并且存储第m个节点已经他的前后
+//节点，然后从第m个节点到第n个节点开始翻转，反转过后的第m个节点的next为null，我们要指定m.next=m的前节点，原来m的后节点的next为第n
+//个节点，这样就翻转完毕，返回头节点。
 class Solution {
     public ListNode reverseBetween(ListNode head, int m, int n) {
        if(head==null||head.next==null)return head;
