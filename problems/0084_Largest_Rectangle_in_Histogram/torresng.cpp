@@ -15,14 +15,12 @@ class Solution {
         s.push(-1);
 
         for (int i = 0; i < heights.size(); ++i) {
-            int x = s.top();
-            if (x == -1 || heights[x] <= heights[i]) {
-                s.push(i);
-            } else {
+            while(s.top() != -1 && heights[s.top()] > heights[i]) {
+                int x = s.top();
                 s.pop();
                 res = max(res, heights[x] * (i - s.top() - 1));
-                --i;
             }
+            s.push(i);
         }
 
         return res;
