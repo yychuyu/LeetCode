@@ -40,31 +40,8 @@ class Solution {
         int res = 0;
 
         for (int i = 0; i < grid.size(); ++i) {
-            stack<int> s;
-            s.push(-1);
-
-            for (int j = 0; j < grid[i].size(); ++j) {
-                while (s.top() != -1 && grid[i][s.top()] > grid[i][j]) {
-                    int x = s.top();
-                    s.pop();
-                    cout << "x = " << grid[i][x] << endl;
-                    cout << "top = " << s.top() << endl;
-                    cout << "j = " << j << endl << endl;
-                    res = max(res, grid[i][x] * (j - s.top() - 1));
-                }
-                s.push(j);
-            }
+            res = max(res, maxRec(grid, i));
         }
-
-        for (int i = 0; i < grid.size(); ++i) {
-            for (int j = 0; j < grid[0].size(); ++j) {
-                cout << grid[i][j] << " ";
-            }
-            cout << endl;
-        }
-        cout << endl;
-
-        cout << res << endl;
         return res;
     }
 
@@ -80,6 +57,25 @@ class Solution {
                 grid[i][j] = matrix[i][j] == '1' ? grid[i - 1][j] + 1 : 0;
             }
         }
+    }
+
+
+    // 這𥚃用了 No. 0084 的思路，可以看看 No. 0084 怎求最大長方面積
+    int maxRec(vector<vector<int>> &grid, int bottom) {
+        int maxVal = 0;
+        stack<int> s;
+        s.push(-1);
+
+        for(int i = 0; i < grid[0].size(); ++i) {
+            while(s.top() != -1 && grid[bottom][s.top()] > grid[bottom][i]) {
+                int x = s.top();
+                s.pop();
+                maxVal = max(maxVal, grid[bottom][x] * (i - s.top() - 1));
+            }
+            s.push(i);
+        }
+
+        return maxVal;
     }
 };
 
@@ -99,9 +95,7 @@ void test_case_2() {
 }
 
 int main(void) {
-    /*
-     *test_case_1();
-     */
+    test_case_1();
     test_case_2();
 
     return 0;
